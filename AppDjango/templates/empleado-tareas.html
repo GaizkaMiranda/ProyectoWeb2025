@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <h2>Tareas en {{ empleado.nombre }}</h2>
+    {% if tareas %}
+        <ul> 
+        {% for tarea in tareas %}   
+            <li>{{ tarea.nombre }} : {{ tarea.descripcion }}</li>
+        {% endfor %} 
+        </ul>
+    {% else %}
+        <p>No hay tareas registradas para este empleado.</p>
+    {% endif %} 
+{% endblock %}

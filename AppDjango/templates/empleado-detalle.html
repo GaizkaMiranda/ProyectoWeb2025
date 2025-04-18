@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block contenido %}
+    {% if empleado %}
+        <h2>Detalles de {{ empleado.nombre }}</h2>
+        <ul>
+            <li><strong>DNI:</strong> {{ empleado.empresa.nombre }}</li>
+            <li><strong>Apellidos:</strong> {{ empleado.apellidos }}</li>
+            <li><strong>Email:</strong> {{ empleado.email }} años</li>
+            <li><strong>Telefono:</strong> {{ empleado.telefono }}</li>
+        </ul>
+        <a href="{% url 'empleados' %}">Volver a la lista</a> 
+    {% else %}
+        <p>Empleado no encontrado.</p>
+    {% endif %}
+{% endblock %}

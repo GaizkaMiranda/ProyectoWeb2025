@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block contenido %}
+    <h1>Lista de empleados</h1>
+    <ul> 
+        {% for empleado in lista_empleados %}  
+            <li><a href="{% url 'detalle_empleado' empleado.pk %}">{{ empleado.nombre }}</a></li> 
+            
+        {% endfor %} 
+    </ul>
+{% endblock %}
