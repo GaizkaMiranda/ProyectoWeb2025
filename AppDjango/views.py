@@ -43,12 +43,12 @@ def empleado_tareas(request, nombre_url):
     }
     return render(request, "empleado-tareas.html", context)
     
-class EmpleadoDetailView(View):
+class EmpleadoDetailView(DetailView):
     model = Empleado 
     template_name = 'empleado-detalle.html'
     context_object_name = 'empleado' 
 
-class ProyectoDetailView(View):
+class ProyectoDetailView(DetailView):
     model = Proyecto
     template_name = 'proyecto-detalle.html'
     context_object_name = 'proyecto'

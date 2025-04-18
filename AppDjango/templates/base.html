@@ -7,9 +7,11 @@
 </head>
 <body>
     <h2>{%block title%}Bienvenido a Deustotil Tech S.L.
-        <a href="{% url 'crear-empleado' %}">Crear empleado</a>
-        <a href="{% url 'crear-proyecto' %}">Crear proyecto</a>
-        <a href="{% url 'crear-tarea' %}">Crear tarea</a>
+        <ul>
+            <li><a href="{% url 'crear-empleado' %}">Crear empleado</a></li>
+            <li><a href="{% url 'crear-proyecto' %}">Crear proyecto</a></li>
+            <li><a href="{% url 'crear-tarea' %}">Crear tarea</a></li>
+        </ul>
         {%endblock%}</h2>
 
     <div id="content">

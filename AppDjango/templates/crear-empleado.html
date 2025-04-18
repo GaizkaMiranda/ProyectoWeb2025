@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+
+{%block title %} Añadir un empleado {% endblock %}
+
+{%block contenido%} 
+
+<h2> Crear un nuevo empleado </h2>
+<form action="{% url 'crear-empleado'%}" method="POST">
+    {{form.as_p}}
+    {% csrf_token %}
+    <button type="submit"> Guardar </button>
+</form>
+{%endblock %}
