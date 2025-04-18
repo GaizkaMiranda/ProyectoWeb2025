@@ -1,16 +1,20 @@
 {% extends "base.html" %}
-
-
 {% block contenido %}
-    {% if trabajador %}
-        <h2>Detalles de {{ trabajador.nombre }}</h2>
+    {% if tarea %}
+        <h2>Detalles de {{ tarea.nombre }}</h2>
         <ul>
-            <li><strong>Empresa:</strong> {{ trabajador.empresa.nombre }}</li>
-            <li><strong>Fecha de Nacimiento:</strong> {{ trabajador.fecha_nacim }}</li>
-            <li><strong>Antigüedad:</strong> {{ trabajador.antiguedad }} años</li>
+            <li><strong>Proyecto perteneciente:</strong> {{ tarea.proyecto.nombre }}</li>
+            <li><strong>Nombre de la tarea:</strong> {{ tarea.nombre }}</li>
+            <li><strong>Descripción:</strong> {{ tarea.descripcion }} </li>
+            <li><strong>Fecha de inicio:</strong> {{ tarea.fecha_inicio }}</li>
+            <li><strong>Fecha de fin:</strong> {{ tarea.fecha_fin }}</li>
+            <li><strong>Responsable de la tarea:</strong> {{ tarea.responsable }} </li>
+            <li><strong>Nivel de responsabilidad:</strong> {{ tarea.n_responsabilidad }} </li>
+
         </ul>
-        <a href="{% url 'trabajadores' %}">Volver a la lista</a> 
+        <a href="{% url 'tareas' %}">Volver a la lista</a> 
     {% else %}
-        <p>Trabajador no encontrado.</p>
+        <p>Tarea no encontrado.</p>
     {% endif %}
 {% endblock %}
+

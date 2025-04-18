@@ -4,6 +4,9 @@ from .models import Empleado, Proyecto, Tarea
 from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .forms import EmpleadoForm, ProyectoForm, TareaForm
+
 
 # Create your views here.
 
@@ -50,8 +53,29 @@ class ProyectoDetailView(View):
     template_name = 'proyecto-detalle.html'
     context_object_name = 'proyecto'
     
-class TareaDetailView(View):
-    model = Tarea       
+class TareaDetailView(DetailView):
+    model = Tarea
     template_name = 'tarea-detalle.html'
+    context_object_name = 'tarea'
+    
+class EmpleadoCreateView(CreateView):
+    model = Empleado
+    template_name = 'crear-empleado.html'
+    form_class = EmpleadoForm
+    success_url = reverse_lazy('empleados')
+    context_object_name = 'empleado'
+
+class ProyectoCreateView(CreateView):
+    model = Proyecto
+    template_name = 'crear-proyecto.html'
+    form_class = ProyectoForm
+    success_url = reverse_lazy('proyectos')
+    context_object_name = 'proyecto'
+
+class TareaCreateView(CreateView):
+    model = Tarea
+    template_name = 'crear-tarea.html'
+    form_class = TareaForm
+    success_url = reverse_lazy('tareas')
     context_object_name = 'tarea'
     
