@@ -91,3 +91,69 @@ class EmpleadoDeleteView(DeleteView):
     model = Empleado
     success_url = reverse_lazy('empleados')
     
+
+class ProyectoUpdateView(UpdateView):
+    model = Proyecto
+    template_name = 'proyecto_update.html'
+    form_class = ProyectoForm
+
+    def get(self, request, pk):
+        proyecto = get_object_or_404(Proyecto, pk=pk)
+        formulario = self.form_class(instance=proyecto)
+        context = {'formulario': formulario, 'proyecto': proyecto}
+        return render(request, self.template_name, context)
+
+    def post(self, request, pk):
+        proyecto = get_object_or_404(Proyecto, pk=pk)
+        formulario = self.form_class(request.POST, instance=proyecto)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('detalle_proyecto', pk=proyecto.pk)
+        else:
+            context = {'formulario': formulario, 'proyecto': proyecto}
+            return render(request, self.template_name, context)
+        
+
+
+class TareaUpdateView(UpdateView):
+    model = Tarea
+    template_name = 'tarea_update.html'
+    form_class = TareaForm
+
+    def get(self, request, pk):
+        tarea = get_object_or_404(Tarea, pk=pk)
+        formulario = self.form_class(instance=tarea)
+        context = {'formulario': formulario, 'tarea': tarea}
+        return render(request, self.template_name, context)
+
+    def post(self, request, pk):
+        tarea = get_object_or_404(Tarea, pk=pk)
+        formulario = self.form_class(request.POST, instance=tarea)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('detalle_tarea', pk=tarea.pk)
+        else:
+            context = {'formulario': formulario, 'tarea': tarea}
+            return render(request, self.template_name, context)
+
+
+class EmpleadoUpdateView(UpdateView):
+    model = Empleado
+    template_name = 'empleado_update.html'
+    form_class = EmpleadoForm
+
+    def get(self, request, pk):
+        empleado = get_object_or_404(Empleado, pk=pk)
+        formulario = self.form_class(instance=empleado)
+        context = {'formulario': formulario, 'empleado': empleado}
+        return render(request, self.template_name, context)
+
+    def post(self, request, pk):
+        empleado = get_object_or_404(Empleado, pk=pk)
+        formulario = self.form_class(request.POST, instance=tarea)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('detalle_empleado', pk=empleado.pk)
+        else:
+            context = {'formulario': formulario, 'empleado': empleado}
+            return render(request, self.template_name, context)

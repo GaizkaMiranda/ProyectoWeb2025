@@ -4,15 +4,22 @@
     {% if proyecto %}
         <h2>Detalles de {{ proyecto.nombre }}</h2>
         <ul>
-            <li><strong>Descripción:</strong> {{ proyecto.descrcipcion }}</li>
+            <li><strong>Descripción:</strong> {{ proyecto.descripcion }}</li>
             <li><strong>Fecha de inicio:</strong> {{ proyecto.fecha_inicio }}</li>
             <li><strong>Fecha de fin:</strong> {{ proyecto.fecha_fin }}</li>
-            <li><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} años</li>
-            <li><strong>Cliente:</strong> {{ proyecto.cliente }} años</li>
-            <li><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} años</li>
-            <li><strong>Empleados:</strong> {{ proyecto.empleados }} años</li>
+            <li><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} €</li>
+            <li><strong>Cliente:</strong> {{ proyecto.cliente }} </li>
+            <li><strong>Empleados:</strong>
+                <ul>
+                    {% for empleado in proyecto.empleados.all %}
+                        <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
+                   
+                    {% endfor %}
+                </ul>
+            </li>
+            
         </ul>
-
+  
         <!-- Botón para eliminar al proyecto -->
         <form method="post" action="{% url 'proyecto_delete' proyecto.pk %}">
             {% csrf_token %}

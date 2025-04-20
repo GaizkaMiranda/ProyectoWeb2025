@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 
 </head>
 <body>
-    <h2>{%block title%}Bienvenido a Deustotil Tech S.L.
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="Logo" class="header-icon">
+
+       </header>
+    <h2>{%block title%}Bienvenido a Deustotil Tech S.L.⚙️</h2>
         <ul>
             <li><a href="{% url 'crear-empleado' %}">Crear empleado</a></li>
             <li><a href="{% url 'crear-proyecto' %}">Crear proyecto</a></li>
             <li><a href="{% url 'crear-tarea' %}">Crear tarea</a></li>
         </ul>
-        {%endblock%}</h2>
+        {%endblock%}
 
     <div id="content">
         {%block contenido%} {%endblock%}
