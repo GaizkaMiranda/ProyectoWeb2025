@@ -79,3 +79,15 @@ class TareaCreateView(CreateView):
     success_url = reverse_lazy('tareas')
     context_object_name = 'tarea'
     
+class ProyectoDeleteView(DeleteView):
+    model = Proyecto
+    success_url = reverse_lazy('proyectos')
+    
+class TareaDeleteView(DeleteView):
+    model = Tarea
+    success_url = reverse_lazy('tareas')
+    
+class EmpleadoDeleteView(DeleteView):
+    model = Empleado
+    success_url = reverse_lazy('empleados')
+    

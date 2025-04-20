@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 
-
 {% block contenido %}
     {% if empleado %}
         <h2>Detalles de {{ empleado.nombre }}</h2>
         <ul>
-            <li><strong>DNI:</strong> {{ empleado.empresa.nombre }}</li>
+            <li><strong>DNI:</strong> {{ empleado.dni }}</li>
             <li><strong>Apellidos:</strong> {{ empleado.apellidos }}</li>
-            <li><strong>Email:</strong> {{ empleado.email }} años</li>
+            <li><strong>Email:</strong> {{ empleado.email }}</li>
             <li><strong>Telefono:</strong> {{ empleado.telefono }}</li>
         </ul>
+
+        <!-- Botón para eliminar al empleado -->
+        <form method="post" action="{% url 'empleado_delete' empleado.pk %}">
+            {% csrf_token %}
+            <button type="submit">Eliminar empleado</button>
+        </form>
+
         <a href="{% url 'empleados' %}">Volver a la lista</a> 
     {% else %}
         <p>Empleado no encontrado.</p>
