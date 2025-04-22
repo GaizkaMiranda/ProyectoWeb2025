@@ -3,7 +3,7 @@
 
 {% block contenido %}
     <h1>Lista de proyectos</h1>
-    <ul> 
+    <ul class="list-view"> 
         {% for proyecto in lista_proyectos %}  
         <li><a href="{% url 'detalle_proyecto' proyecto.pk %}">{{ proyecto.nombre }}</a></li> 
 

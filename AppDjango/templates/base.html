@@ -14,11 +14,12 @@
 
        </header>
     <h2>{%block title%}Bienvenido a Deustotil Tech S.L.⚙️</h2>
-        <ul>
-            <li><a href="{% url 'crear-empleado' %}">Crear empleado</a></li>
-            <li><a href="{% url 'crear-proyecto' %}">Crear proyecto</a></li>
-            <li><a href="{% url 'crear-tarea' %}">Crear tarea</a></li>
-        </ul>
+    <ul class="menu-horizontal">
+        <li><a href="{% url 'crear-empleado' %}">Crear empleado</a></li>
+        <li><a href="{% url 'crear-proyecto' %}">Crear proyecto</a></li>
+        <li><a href="{% url 'crear-tarea' %}">Crear tarea</a></li>
+    </ul>
+    
         {%endblock%}
 
     <div id="content">

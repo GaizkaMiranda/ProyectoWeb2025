@@ -3,7 +3,7 @@
 
 {% block contenido %}
     <h1>Lista de tareas</h1>
-    <ul> 
+    <ul class="list-view"> 
         {% for tarea in lista_tareas %}  
         <li><a href="{% url 'detalle_tarea' tarea.pk %}">{{ tarea.nombre }}</a></li> 
 

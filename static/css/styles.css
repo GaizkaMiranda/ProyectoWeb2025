@@ -3,3 +3,142 @@
     height: auto;
     margin-right: 40px;
 }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+/*------------------------Header de la pagina-------------------------*/
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    background-color: #00509e;
+    padding: 10px 0;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-menu li a:hover {
+    background-color: #0073e6;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+  
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/*-------------------------Menu horizontal, navegacion---------*/
+.menu-horizontal {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    justify-content: center; /* Centra la lista horizontalmente */
+}
+
+.menu-horizontal li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.menu-horizontal li a:hover {
+    background-color: #b8dcff;
+}
+
+/*-----------------------Formulario----------------------------*/
+.form-container p {
+    margin-bottom: 15px;
+}
+
+.form-container label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+width: 100%;
+padding: 8px;
+box-sizing: border-box;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+.btn {
+background-color: #00509e;
+color: white;
+padding: 10px 15px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.btn:hover {
+background-color: #003f7f;
+}
+
+/*------------------Lista--------------------------*/
+
+.list-view {
+ list-style-type: none; 
+ width: 120px;  
+}
+
+.list-view li {
+    background-color: #f0f0f0;
+    margin: 8px;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+.list-view li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.list-view li:hover {
+    background-color: #b8dcff;
+}
+
+/*------------------------Detail View-------------------------*/
