@@ -142,3 +142,54 @@ background-color: #003f7f;
 }
 
 /*------------------------Detail View-------------------------*/
+
+.detalles {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #c9c9c9;
+    border-radius: 8px;
+}
+.detalles h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-detalle {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-detalle li {
+    margin-bottom: 10px;
+}
+
+.empleados-de-proyecto {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.boton-borrar {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.boton-borrar:hover {
+    background-color: #c0392b;
+}
+
+.boton-volver {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #3498db;
+}
+
+.boton-volver:hover {
+    text-decoration: underline;
+}

@@ -2,31 +2,33 @@
 
 {% block contenido %}
     {% if proyecto %}
-        <h2>Detalles de {{ proyecto.nombre }}</h2>
-        <ul>
-            <li><strong>Descripción:</strong> {{ proyecto.descripcion }}</li>
-            <li><strong>Fecha de inicio:</strong> {{ proyecto.fecha_inicio }}</li>
-            <li><strong>Fecha de fin:</strong> {{ proyecto.fecha_fin }}</li>
-            <li><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} €</li>
-            <li><strong>Cliente:</strong> {{ proyecto.cliente }} </li>
-            <li><strong>Empleados:</strong>
-                <ul>
-                    {% for empleado in proyecto.empleados.all %}
-                        <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
-                   
-                    {% endfor %}
-                </ul>
-            </li>
-            
-        </ul>
-  
-        <!-- Botón para eliminar al proyecto -->
-        <form method="post" action="{% url 'proyecto_delete' proyecto.pk %}">
-            {% csrf_token %}
-            <button type="submit" class="boton-borrar">Eliminar proyecto</button>
-        </form>
+        <div class="detalles">
+            <h2>Detalles de {{ proyecto.nombre }}</h2>
+            <ul class="info-detalle">
+                <li><strong>Descripción:</strong> {{ proyecto.descripcion }}</li>
+                <li><strong>Fecha de inicio:</strong> {{ proyecto.fecha_inicio }}</li>
+                <li><strong>Fecha de fin:</strong> {{ proyecto.fecha_fin }}</li>
+                <li><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} €</li>
+                <li><strong>Cliente:</strong> {{ proyecto.cliente }} </li>
+                <li><strong>Empleados:</strong>
+                    <ul class="empleados-de-proyecto">
+                        {% for empleado in proyecto.empleados.all %}
+                            <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
+                    
+                        {% endfor %}
+                    </ul>
+                </li>
+                
+            </ul>
+    
+            <!-- Botón para eliminar al proyecto -->
+            <form method="post" action="{% url 'proyecto_delete' proyecto.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="boton-borrar">Eliminar proyecto</button>
+            </form>
 
-        <a href="{% url 'proyectos' %}">Volver a la lista</a> 
+            <a href="{% url 'proyectos' %}" class="boton-volver">Volver a la lista</a> 
+        </div>
     {% else %}
         <p>Proyecto no encontrado.</p>
     {% endif %}
