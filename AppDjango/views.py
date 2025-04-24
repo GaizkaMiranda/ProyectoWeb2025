@@ -157,3 +157,9 @@ class EmpleadoUpdateView(UpdateView):
         else:
             context = {'formulario': formulario, 'empleado': empleado}
             return render(request, self.template_name, context)
+        
+
+def UltimosTresEmpleados(request):
+    ultimos_empleados = Empleado.objects.order_by('-id')[:3]
+    # el "-id" le ponemos para el orden descendente, de esta manera al usar ":3", cogerá los 3 últimos de la lista
+    return render(request, 'tu_template.html', {'ultimos_empleados': ultimos_empleados})

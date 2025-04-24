@@ -62,6 +62,72 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Footer */
+
+.footerContainer {
+    width: 100%;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+    background-color: #f5f5f5;
+}
+
+.footerColumn {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0 15px;
+    text-align: center;
+    color: rgb(7, 3, 3);
+}
+
+
+.footerColumn h3 {
+	font-size: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.footerColumn ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 30px;
+}
+
+.footerColumn li {
+	margin-bottom: 15px;
+}
+
+.footerColumn a {
+	color: rgb(10, 7, 7);
+	text-decoration: none;
+	/* Saco de este enlace la idea, ya que antes de esto, toda la imagen quedaba como enlace y estaba feo https://www.hostgator.mx/blog/quitar-subrayado-enlace/ */
+}
+
+.footerColumn .nosotros a {
+	display: inline-block;
+	text-align: center;
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	color: #0f0c0c;
+	margin-right: 10px;
+	background-color: #0a141d;
+	text-align: center;
+	transition: all 300ms ease;
+}
+
+.copyright {
+	background-color: #282727;
+	padding: 15px 10px;
+	text-align: center;
+	color: #fff;
+}
+
+
+
 /*-------------------------Menu horizontal, navegacion---------*/
 .menu-horizontal {
     list-style: none; /* Elimina los puntos de la lista */

@@ -5,26 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-
 </head>
 <body>
     <header>
         <img src="{% static 'images/logo.png' %}" alt="Logo" class="header-icon">
+    </header>
 
-       </header>
-    <h2>{%block title%}Bienvenido a Deustotil Tech S.L.⚙️</h2>
+    <h2>{% block title %}Bienvenido a Deustotil Tech S.L.⚙️{% endblock %}</h2>
+
     <ul class="menu-horizontal">
         <li><a href="{% url 'crear-empleado' %}">Crear empleado</a></li>
         <li><a href="{% url 'crear-proyecto' %}">Crear proyecto</a></li>
         <li><a href="{% url 'crear-tarea' %}">Crear tarea</a></li>
     </ul>
     
-        {%endblock%}
-
     <div id="content">
-        {%block contenido%} {%endblock%}
+        {% block contenido %}{% endblock %}
     </div>
-    
+
+    <footer>
+        {% block footer %}
+        <div class="footerContainer">
+            <div class="footerColumn">
+                <h3>Últimos tres empleados</h3>
+                <ul>
+                    <li><a href="{% url 'crear-empleado' %}">empleado1</a></li>
+                    <li><a href="{% url 'crear-empleado' %}">empleado2</a></li>
+                    <li><a href="{% url 'crear-empleado' %}">empleado3</a></li>
+                </ul>
+            </div>
+            <div class="footerColumn">
+                <h3>Datos de contacto</h3>
+                <ul>
+                    <li> Polígono Industrial Jundiz, C.jundiz, 3, Vitoria-Gasteiz </li>
+                    <li> Número de teléfono: +34 63554771</li>
+                    <li> Correo electrónico: Deustotil@deusto.eus</li>
+                </ul>
+            </div>
+            <div class="footerColumn">
+                <h3>Sobre nosotros</h3>
+                <div class="nosotros">
+                    <a class="muymal"><img src="{% static 'images/muymal.jpg' %}" alt="muymal"></a>
+                    <a class="regular"><img src="{% static 'images/regular.jpg' %}" alt="regular"></a>
+                    <a class="bien"><img src="{% static 'images/bien.jpg' %}" alt="bien"></a>
+                    <a class="muybien"><img src="{% static 'images/muybien.jpg' %}" alt="muybien"></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
+        </div>
+        {% endblock %}
+    </footer>
 </body>
 </html>
