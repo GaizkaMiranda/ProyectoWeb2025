@@ -32,14 +32,21 @@ class Proyecto(models.Model):
 class Herramienta(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=1000)
+    horas_disponibilidad = models.IntegerField(default=0)
+
         
     def __str__(self):
-        return f"{self.nombre}-{self.descripcion}"   
+        return f"{self.nombre}-{self.descripcion}-{self.horas_disponibilidad}"   
 
 # Modelo TAREA
 class Tarea(models.Model):
-    #ManyToMany para disponer de n herramientas en m tareas
-    herramientas =models.ManyToManyField(Herramienta, related_name="herramientas")
+    ESTADO_TAREA = [
+    ('abierta', 'Abierta'),
+    ('asignada', 'Asignada'),
+    ('en_proceso', 'En proceso'),
+    ('finalizada', 'Finalizada'),
+]
+
     PRIORIDAD_ELECCION = [
         ('alta', 'Alta'),
         ('media', 'Media'),
@@ -52,6 +59,10 @@ class Tarea(models.Model):
     fecha_fin = models.DateTimeField("Fecha fin")
     responsable = models.ForeignKey(Empleado, on_delete=models.CASCADE, related_name= "tareas")
     n_responsabilidad = models.CharField(max_length=10,choices=PRIORIDAD_ELECCION, default='media')
+    estado = models.CharField(max_length=20, choices=ESTADO_TAREA, default='abierta')
+    #ManyToMany para disponer de n herramientas en m tareas
+    herramientas =models.ManyToManyField(Herramienta, related_name="herramientas")
+    notas = models.TextField(max_length=500)
         
     def __str__(self):
-        return f"{self.nombre}- {self.descripcion}- {self.fecha_inicio}- {self.fecha_fin}- {self.responsable}- {self.n_responsabilidad}"
+        return f"{self.nombre}- {self.descripcion}- {self.fecha_inicio}- {self.fecha_fin}- {self.responsable}- {self.n_responsabilidad}- {self.estado}"
