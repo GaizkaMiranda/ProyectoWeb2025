@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+
+{%block title %} Fast menu{% endblock %}
+
+{%block contenido%} 
+
+<h2> Crear una  nueva herramienta </h2>
+<form action="{% url 'crear_herramienta'%}" method="POST">
+    {{form.as_p}}
+    {% csrf_token %}
+    <button type="submit"> Guardar </button>
+</form>
+{%endblock %}

@@ -8,7 +8,7 @@ class Empleado(models.Model):
     apellidos = models.CharField(max_length=100)
     email = models.EmailField(max_length=50)
     telefono = models.IntegerField()
-    
+# Metodo del modelo empleado:
     def __str__(self):
         return f"{self.dni}- {self.nombre}- {self.apellidos}- {self.email}- {self.telefono}"
 
@@ -24,7 +24,7 @@ class Proyecto(models.Model):
     cliente = models.CharField(max_length=100)
     #ManyToMany para disponer de n empleados en m proyectos
     empleados = models.ManyToManyField(Empleado, related_name="proyectos")
-
+# Metodo del modelo proyecto:
     def __str__(self):
         return f"{self.nombre}- {self.descripcion}- {self.fecha_inicio}- {self.fecha_fin}- {self.presupuesto}- {self.cliente}"
  
@@ -33,8 +33,7 @@ class Herramienta(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=1000)
     horas_disponibilidad = models.IntegerField(default=0)
-
-        
+# Metodo del modelo herramienta:
     def __str__(self):
         return f"{self.nombre}-{self.descripcion}-{self.horas_disponibilidad}"   
 
@@ -46,7 +45,6 @@ class Tarea(models.Model):
     ('en_proceso', 'En proceso'),
     ('finalizada', 'Finalizada'),
 ]
-
     PRIORIDAD_ELECCION = [
         ('alta', 'Alta'),
         ('media', 'Media'),
@@ -63,6 +61,6 @@ class Tarea(models.Model):
     #ManyToMany para disponer de n herramientas en m tareas
     herramientas =models.ManyToManyField(Herramienta, related_name="herramientas")
     notas = models.TextField(max_length=500)
-        
+    # Metodo del modelo tarea   
     def __str__(self):
         return f"{self.nombre}- {self.descripcion}- {self.fecha_inicio}- {self.fecha_fin}- {self.responsable}- {self.n_responsabilidad}- {self.estado}"

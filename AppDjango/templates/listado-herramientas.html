@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block contenido %}
+    <h1>Lista de herramientas</h1>
+    <ul class="list-view"> 
+        {% for herramienta in lista_herramientas %}  
+        <li><a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a></li> 
+
+        {% endfor %} 
+    </ul>
+{% endblock %}

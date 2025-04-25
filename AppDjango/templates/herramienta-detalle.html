@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    {% if herramienta %}
+        <div class="detalles">
+            <h2>Detalles de {{ herramienta.nombre }}</h2>
+            <ul>
+                <li><strong>Nombre de la herramienta:</strong> {{ herramienta.nombre }}</li>
+                <li><strong>Descripción de la herramienta:</strong> {{ herramienta.descripcion }} </li>
+                <li><strong>Horas disponibles de la herramienta:</strong> {{ herramienta.horas_disponibilidad }}</li>
+            </ul>
+
+            <!-- Botón para eliminar la herramienta -->
+            <form method="post" action="{% url 'herramienta_delete' herramienta.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="boton-borrar">Eliminar herramienta</button>
+            </form>
+
+            <a href="{% url 'herramientas' %}" class="boton-volver">Volver a la lista</a> 
+        </div>
+    {% else %}
+        <p>Herramienta no encontrada.</p>
+    {% endif %}
+{% endblock %}

@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# LISTADO DE APLICACIONES DEL PROYECTO:
+# NUESTRA APLICACION = "AppDjango"
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
