@@ -94,7 +94,7 @@ class TareaCreateView(CreateView):
     success_url = reverse_lazy('tareas')
     context_object_name = 'tarea'
 
-class HerramientCreateView(CreateView):
+class HerramientaCreateView(CreateView):
     model = Herramienta
     template_name = "crear-herramienta.html"
     form_class = HerramientaForm
