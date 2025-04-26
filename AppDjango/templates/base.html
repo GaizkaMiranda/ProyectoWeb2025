@@ -30,9 +30,13 @@
             <div class="footerColumn">
                 <h3>Últimos tres empleados</h3>
                 <ul>
-                    <li><a href="{% url 'crear-empleado' %}">empleado1</a></li>
-                    <li><a href="{% url 'crear-empleado' %}">empleado2</a></li>
-                    <li><a href="{% url 'crear-empleado' %}">empleado3</a></li>
+                    {% for empleado in ultimos_empleados %}
+                        <li>
+                            <a href="{% url 'detalle_empleado' empleado.id %}">{{ empleado.nombre }}</a>
+                        </li>
+                    {% empty %}
+                        <li>No hay empleados todavía</li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="footerColumn">
