@@ -1,12 +1,26 @@
 {% extends "base.html" %}
 
-
 {% block contenido %}
     <h1>Lista de herramientas</h1>
     <ul class="list-view"> 
         {% for herramienta in lista_herramientas %}  
-        <li><a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a></li> 
-
+            <li><a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a></li> 
         {% endfor %} 
     </ul>
 {% endblock %}
+
+{% block footer_contenido %}
+<div class="footerColumn">
+    <h3>Últimas tres herramientas</h3>
+    <ul>
+        {% for herramienta in ultimas_herramientas %}
+            <li>
+                <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>
+            </li>
+        {% empty %}
+            <li>No hay herramientas todavía</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+

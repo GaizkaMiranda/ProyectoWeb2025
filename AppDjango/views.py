@@ -15,28 +15,27 @@ from .forms import EmpleadoForm, ProyectoForm, TareaForm, HerramientaForm
 # LIST VIEWS:
 class ProyectoListView(View):
     def get(self, request):
-        proyectos = get_list_or_404(Proyecto.objects.order_by("nombre"))
-        ultimos_empleados = Empleado.objects.order_by('-id')[:3]  # 👈 Añades esto
+        proyectos = Proyecto.objects.order_by("nombre")
+        ultimos_proyectos = Proyecto.objects.order_by('-id')[:3]  
         context = {
             "lista_proyectos": proyectos,
-            "ultimos_empleados": ultimos_empleados,  # 👈 Lo pasas aquí
+            "ultimos_proyectos": ultimos_proyectos,  
         }
         return render(request, "listado-proyectos.html", context)
-
     
 class TareaListView(View):
     def get(self, request):
         tareas = get_list_or_404(Tarea.objects.order_by("nombre"))
-        ultimos_empleados = Empleado.objects.order_by('-id')[:3]
+        ultimas_tareas = Tarea.objects.order_by('-id')[:3]
         context = {
             "lista_tareas": tareas,
-            "ultimos_empleados": ultimos_empleados,
+            "ultimas_tareas": ultimas_tareas,
         }
         return render(request, "listado-tareas.html", context)
 
 class EmpleadoListView(View):
     def get(self, request):
-        empleados = get_list_or_404(Empleado.objects.order_by("dni"))
+        empleados = Empleado.objects.order_by("dni")
         ultimos_empleados = Empleado.objects.order_by('-id')[:3]
         context = {
             "lista_empleados": empleados,
@@ -46,13 +45,14 @@ class EmpleadoListView(View):
 
 class HerramientaListView(View):
     def get(self, request):
-        herramientas = get_list_or_404(Herramienta.objects.order_by("nombre"))  
-        ultimos_empleados = Empleado.objects.order_by('-id')[:3]
+        herramientas = Herramienta.objects.order_by("nombre")
+        ultimas_herramientas = Herramienta.objects.order_by('-id')[:3]
         context = {
             "lista_herramientas": herramientas,
-            "ultimos_empleados": ultimos_empleados,
+            "ultimas_herramientas": ultimas_herramientas,
         }
         return render(request, "listado-herramientas.html", context)
+
 #Usamos una vista basada en función esta vez, para mostrar las tareas asociadas a cada empleado    
 def empleado_tareas(request, nombre_url):           
     empleado = get_object_or_404(Empleado, nombre=nombre_url) 

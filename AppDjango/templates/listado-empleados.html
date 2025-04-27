@@ -1,13 +1,29 @@
 {% extends "base.html" %}
 
+{% block title %}
+⚙️Bienvenido/a a Deustotil Tech S.L. - Empleados⚙️
+{% endblock %}
 
 {% block contenido %}
     <h1>Lista de empleados</h1>
     <ul class="list-view"> 
         {% for empleado in lista_empleados %}  
             <li><a href="{% url 'detalle_empleado' empleado.pk %}">{{ empleado.nombre }}</a></li> 
-            
         {% endfor %} 
     </ul>
 {% endblock %}
 
+{% block footer_contenido %}
+<div class="footerColumn">
+    <h3>Últimos tres empleados</h3>
+    <ul>
+        {% for empleado in ultimos_empleados %}
+            <li>
+                <a href="{% url 'detalle_empleado' empleado.pk %}">{{ empleado.nombre }}</a>
+            </li>
+        {% empty %}
+            <li>No hay empleados todavía</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

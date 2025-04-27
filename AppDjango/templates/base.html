@@ -26,41 +26,33 @@
 
     <footer>
         {% block footer %}
-        <div class="footerContainer">
-            <div class="footerColumn">
-                <h3>Últimos tres empleados</h3>
-                <ul>
-                    {% for empleado in ultimos_empleados %}
-                        <li>
-                            <a href="{% url 'detalle_empleado' empleado.id %}">{{ empleado.nombre }}</a>
-                        </li>
-                    {% empty %}
-                        <li>No hay empleados todavía</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="footerColumn">
-                <h3>Datos de contacto</h3>
-                <ul>
-                    <li> Polígono Industrial Jundiz, C.jundiz, 3, Vitoria-Gasteiz </li>
-                    <li> Número de teléfono: +34 635 547 710</li>
-                    <li> Correo electrónico: Deustotil@deusto.eus</li>
-                </ul>
-            </div>
-            <div class="footerColumn">
-                <h3>Sobre nosotros</h3>
-                <div class="nosotros">
-                    <a class="muymal"><img src="{% static 'images/muymal.jpg' %}" alt="muymal"></a>
-                    <a class="regular"><img src="{% static 'images/regular.jpg' %}" alt="regular"></a>
-                    <a class="bien"><img src="{% static 'images/bien.jpg' %}" alt="bien"></a>
-                    <a class="muybien"><img src="{% static 'images/muybien.jpg' %}" alt="muybien"></a>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
-        </div>
+    <div class="footerContainer">
+        {% block footer_contenido %}
+            <!-- aquí cada página pondrá lo suyo: empleados, tareas, proyectos o herramientas -->
         {% endblock %}
+        <div class="footerColumn">
+            <h3>Datos de contacto</h3>
+            <ul>
+                <li>Polígono Industrial Jundiz, C.jundiz, 3, Vitoria-Gasteiz</li>
+                <li>Número de teléfono: +34 635 547 710</li>
+                <li>Correo electrónico: Deustotil@deusto.eus</li>
+            </ul>
+        </div>
+        <div class="footerColumn">
+            <h3>Sobre nosotros</h3>
+            <div class="nosotros">
+                <a class="muymal"><img src="{% static 'images/muymal.jpg' %}" alt="muymal"></a>
+                <a class="regular"><img src="{% static 'images/regular.jpg' %}" alt="regular"></a>
+                <a class="bien"><img src="{% static 'images/bien.jpg' %}" alt="bien"></a>
+                <a class="muybien"><img src="{% static 'images/muybien.jpg' %}" alt="muybien"></a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
+    </div>
+{% endblock %}
+
     </footer>
 </body>
 </html>

@@ -10,3 +10,19 @@
         {% endfor %} 
     </ul>
 {% endblock %}
+
+
+{% block footer_contenido %}
+<div class="footerColumn">
+    <h3>Últimos tres proyectos</h3>
+    <ul>
+        {% for proyecto in ultimos_proyectos %}
+            <li>
+                <a href="{% url 'detalle_proyecto' proyecto.pk %}">{{ proyecto.nombre }}</a>
+            </li>
+        {% empty %}
+            <li>No hay proyectos todavía</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
