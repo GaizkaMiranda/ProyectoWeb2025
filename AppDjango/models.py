@@ -13,8 +13,7 @@ class Empleado(models.Model):
         return f"{self.dni}- {self.nombre}- {self.apellidos}- {self.email}- {self.telefono}"
 
 # Modelo PROYECTO
-# Proyecto tiene varias tareas (relacion 1-N)
-# AQUI ES M-N
+# Proyecto M-N Empleados
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=500)

@@ -84,7 +84,7 @@ class ProyectoDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimos_proyectos'] = Proyecto.objects.order_by('-id')[:3]
         return context
     
 class TareaDetailView(DetailView):
@@ -94,7 +94,7 @@ class TareaDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimas_tareas'] = Tarea.objects.order_by('-id')[:3]
         
         # Recupera y elimina el mensaje de sesión (si existe)
         mensaje_estado = self.request.session.pop('mensaje_estado', None)
@@ -110,7 +110,7 @@ class HerramientaDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimas_herramientas'] = Herramienta.objects.order_by('-id')[:3]
         return context
 
 

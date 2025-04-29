@@ -15,9 +15,24 @@
                 <button type="submit" class="boton-borrar">Eliminar herramienta</button>
             </form>
 
-            <a href="{% url 'herramientas' %}" class="boton-volver">Volver a la lista</a> 
+            <a href="{% url 'herramientas' %}" class="boton-volver">Volver a la lista de herramientas</a> 
         </div>
     {% else %}
-        <p>Herramienta no encontrada.</p>
+        <p>Herramienta no encontrada</p>
     {% endif %}
+{% endblock %}
+
+{% block footer_contenido %}
+<div class="footerColumn">
+    <h3>Últimas tres herramientas:</h3>
+    <ul>
+        {% for herramientas in ultimas_herramientas %}
+            <li>
+                <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>
+            </li>
+        {% empty %}
+            <li>No existen herramientas</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
