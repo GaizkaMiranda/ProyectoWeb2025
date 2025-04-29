@@ -17,7 +17,8 @@
                 <li><strong>Notas:</strong> {{ tarea.notas }} </li>
             </ul>
 
-            <!-- Botón para eliminar la tarea -->
+            <a href="{% url 'tarea_update' tarea.pk %}" class="boton-editar">Editar tarea</a>
+
             <form method="post" action="{% url 'tarea_delete' tarea.pk %}">
                 {% csrf_token %}
                 <button type="submit" class="boton-borrar">Eliminar tarea</button>

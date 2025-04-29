@@ -128,6 +128,8 @@ h2 {
 
 
 
+
+
 /*-------------------------Menu horizontal, navegacion---------*/
 .menu-horizontal {
     list-style: none; /* Elimina los puntos de la lista */
@@ -135,6 +137,8 @@ h2 {
     margin: 0;
     display: flex; 
     justify-content: center; /* Centra la lista horizontalmente */
+    margin-bottom: 30px; /* Ajusta este valor según necesites */
+
 }
 
 .menu-horizontal li a {
@@ -145,6 +149,24 @@ h2 {
 }
 
 .menu-horizontal li a:hover {
+    background-color: #b8dcff;
+}
+.menu-horizontal2 {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    justify-content: center; /* Centra la lista horizontalmente */
+}
+
+.menu-horizontal2 li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.menu-horizontal2 li a:hover {
     background-color: #b8dcff;
 }
 

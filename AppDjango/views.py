@@ -7,10 +7,9 @@ from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import EmpleadoForm, ProyectoForm, TareaForm, HerramientaForm
 
-
 # Create your views here.
 
-#Vamos a realizar las vistas basadas en clases para facilitar tanto la creación como la manipulación de estas
+#Vamos a realizar las vistas basadas en CLASES para facilitar tanto la creación como la manipulación de estas
 
 # LIST VIEWS:
 class ProyectoListView(View):
@@ -66,7 +65,7 @@ def empleado_tareas(request, nombre_url):
     return render(request, "empleado-tareas.html", context)
 
 
-# DETAIL VIEWS:
+
 # DETAIL VIEWS:
 class EmpleadoDetailView(DetailView):
     model = Empleado 
@@ -96,7 +95,13 @@ class TareaDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        
+        # Recupera y elimina el mensaje de sesión (si existe)
+        mensaje_estado = self.request.session.pop('mensaje_estado', None)
+        context['mensaje_estado'] = mensaje_estado
+
         return context
+
 
 class HerramientaDetailView(DetailView):
     model = Herramienta
@@ -237,6 +242,7 @@ class ProyectoUpdateView(UpdateView):
             }
             return render(request, self.template_name, context)
         
+from django.contrib import messages
 
 class TareaUpdateView(UpdateView):
     model = Tarea
@@ -247,27 +253,47 @@ class TareaUpdateView(UpdateView):
         tarea = get_object_or_404(Tarea, pk=pk)
         formulario = self.form_class(instance=tarea)
         ultimos_empleados = Empleado.objects.order_by('-id')[:3]
+        
+        # Mostrar notificación si existe en sesión
+        notificacion = request.session.pop('notificacion_estado_tarea', None)
+        
+        context = {
+            'formulario': formulario,
+            'tarea': tarea,
+            'ultimos_empleados': ultimos_empleados,
+            'notificacion': notificacion,  # Añadimos la notificación al contexto
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, pk):
+        tarea = get_object_or_404(Tarea, pk=pk)
+        estado_anterior = tarea.estado
+        formulario = self.form_class(request.POST, instance=tarea)
+
+        if formulario.is_valid():
+            tarea_actualizada = formulario.save()
+
+            # Si el estado ha cambiado
+            if estado_anterior != tarea_actualizada.estado:
+                mensaje = f"La tarea '{tarea_actualizada.nombre}' ha cambiado de {tarea.get_estado_display()} a {tarea_actualizada.get_estado_display()}"
+                
+                # Opción 1: Usar el sistema de mensajes de Django
+                messages.success(request, mensaje)
+                
+                # Opción 2: Guardar en sesión (como tenías)
+                request.session['notificacion_estado_tarea'] = mensaje
+
+            return redirect('detalle_tarea', pk=tarea_actualizada.pk)
+
+        # En caso de error en el formulario
+        ultimos_empleados = Empleado.objects.order_by('-id')[:3]
         context = {
             'formulario': formulario,
             'tarea': tarea,
             'ultimos_empleados': ultimos_empleados,
         }
         return render(request, self.template_name, context)
-
-    def post(self, request, pk):
-        tarea = get_object_or_404(Tarea, pk=pk)
-        formulario = self.form_class(request.POST, instance=tarea)
-        ultimos_empleados = Empleado.objects.order_by('-id')[:3]
-        if formulario.is_valid():
-            formulario.save()
-            return redirect('detalle_tarea', pk=tarea.pk)
-        else:
-            context = {
-                'formulario': formulario,
-                'tarea': tarea,
-                'ultimos_empleados': ultimos_empleados,
-            }
-            return render(request, self.template_name, context)
+    
 
 
 class EmpleadoUpdateView(UpdateView):
