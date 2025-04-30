@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_object_or_404, render, get_list_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.http import HttpResponse
 from .models import Empleado, Proyecto, Tarea, Herramienta
 from django.views import View
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import EmpleadoForm, ProyectoForm, TareaForm, HerramientaForm
 from django.contrib import messages
