@@ -20,7 +20,7 @@
                 <a href="{% url 'detalle_tarea' tarea.pk %}">{{ tarea.nombre }}</a>
             </li>
         {% empty %}
-            <li>No hay tareas todavía</li>
+            <li>No existen tareas</li>
         {% endfor %}
     </ul>
 </div>

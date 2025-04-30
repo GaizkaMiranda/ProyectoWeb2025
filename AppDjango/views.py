@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import EmpleadoForm, ProyectoForm, TareaForm, HerramientaForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -136,7 +137,7 @@ class ProyectoCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimos_proyectos'] = Proyecto.objects.order_by('-id')[:3]
         return context
 
 class TareaCreateView(CreateView):
@@ -148,7 +149,7 @@ class TareaCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimas_tareas'] = Tarea.objects.order_by('-id')[:3]
         return context
 
 class HerramientaCreateView(CreateView):
@@ -160,17 +161,9 @@ class HerramientaCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimas_herramientas'] = Herramienta.objects.order_by('-id')[:3]
         return context
 
-
-
-# DELETE VIEWS:    
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
-from django.views.generic import DeleteView, UpdateView
-from .models import Empleado, Proyecto, Tarea, Herramienta
-from .forms import ProyectoForm, TareaForm, EmpleadoForm, HerramientaForm
 
 # DELETE VIEWS:
 class ProyectoDeleteView(DeleteView):
@@ -179,7 +172,7 @@ class ProyectoDeleteView(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimos_proyectos'] = Proyecto.objects.order_by('-id')[:3]
         return context
 
 class TareaDeleteView(DeleteView):
@@ -188,7 +181,7 @@ class TareaDeleteView(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimas_tareas'] = Tarea.objects.order_by('-id')[:3]
         return context
 
 class EmpleadoDeleteView(DeleteView):
@@ -206,7 +199,7 @@ class HerramientaDeleteView(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
+        context['ultimas_herramientas'] = Herramienta.objects.order_by('-id')[:3]
         return context
 
 
@@ -242,7 +235,7 @@ class ProyectoUpdateView(UpdateView):
             }
             return render(request, self.template_name, context)
         
-from django.contrib import messages
+
 
 class TareaUpdateView(UpdateView):
     model = Tarea

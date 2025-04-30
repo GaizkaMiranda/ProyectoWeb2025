@@ -23,3 +23,18 @@
         <p>Empleado no encontrado.</p>
     {% endif %}
 {% endblock %}
+
+{% block footer_contenido %}
+<div class="footerColumn">
+    <h3>Últimos tres empleados:</h3>
+    <ul>
+        {% for empleado in ultimos_empleados %}
+            <li>
+                <a href="{% url 'detalle_empleado' empleado.pk %}">{{ empleado.nombre }}</a>
+            </li>
+        {% empty %}
+            <li>No existen empleados</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
