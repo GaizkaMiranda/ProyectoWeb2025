@@ -3,18 +3,19 @@
 {%block title %} Fast menu{% endblock %}
 
 {%block contenido%} 
-
+<div class="form-container">
 <h2> Crear un nuevo empleado </h2>
 <form action="{% url 'crear-empleado'%}" method="POST">
     {{form.as_p}}
     {% csrf_token %}
     <button type="submit"> Guardar </button>
 </form>
+</div>
 {%endblock %}
 
 {% block footer_contenido %}
 <div class="footerColumn">
-    <h3>Últimos tres empleados:</h3>
+    <h3>Últimos tres empleados</h3>
     <ul>
         {% for empleado in ultimos_empleados %}
             <li>

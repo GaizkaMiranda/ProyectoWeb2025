@@ -20,7 +20,6 @@ urlpatterns = [
 
     #URLs modelo: EMPLEADO
     path("empleados/",EmpleadoListView.as_view(), name="empleados"),
-    path("empleado/<str:dni_url>", views.empleado_tareas, name="empleado-tareas"),
     path("empleados/<int:pk>/", EmpleadoDetailView.as_view(), name="detalle_empleado"),    
     path('empleados/crear/', EmpleadoCreateView.as_view(), name='crear-empleado'),
     path('empleados/eliminar/<int:pk>/', EmpleadoDeleteView.as_view(), name='empleado_delete'),

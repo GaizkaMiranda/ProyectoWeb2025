@@ -28,47 +28,19 @@
         <li><a href="{% url 'tareas' %}">Tareas</a></li>
         <li><a href="{% url 'herramientas' %}">Herramientas</a></li>
     </ul>
-    {% if mensaje_estado %}
-    <div class="notificacion-caja">
-      {{ mensaje_estado }}
-    </div>
-  {% endif %}
     <div id="content">
        
 
 {% block contenido %}
-    <!-- Mostrar notificación de cambio de estado -->
-    {% if messages %}
-        <div class="notificacion-estado">
-            {% for message in messages %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-    
-    <!-- O usando el método de sesión -->
-    {% if notificacion %}
-        <div class="alert alert-success">
-            {{ notificacion }}
-        </div>
-    {% else %}
-        <div class="alert alert-info">
-            No hay actualizaciones recientes en esta tarea.
-        </div>
-    {% endif %}
 
-    <!-- Resto de tu contenido actual -->
-    {% if tarea %}
-        <div class="detalles">
-            <h2>Detalles de {{ tarea.nombre }}</h2>
-            [...]
-        </div>
-    {% endif %}
 {% endblock %}
-    </div>
-
+</div>
+        
+<aside class="sidebar">
+    {% block listado_lateral %}
+    {% endblock %}
+</aside>
+</div>
     <footer>
         {% block footer %}
         <div class="footerContainer">

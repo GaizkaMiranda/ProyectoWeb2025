@@ -3,6 +3,7 @@
 {%block title %} Fast menu{% endblock %}
 
 {%block contenido%} 
+<div class="form-container">
 
 <h2> Crear una  nueva herramienta </h2>
 <form action="{% url 'crear_herramienta'%}" method="POST">
@@ -10,11 +11,12 @@
     {% csrf_token %}
     <button type="submit"> Guardar </button>
 </form>
+</div>
 {%endblock %}
 
 {% block footer_contenido %}
 <div class="footerColumn">
-    <h3>Últimas tres herramientas:</h3>
+    <h3>Últimas tres herramientas</h3>
     <ul>
         {% for herramienta in ultimas_herramientas %}
             <li>

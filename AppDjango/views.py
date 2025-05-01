@@ -52,20 +52,6 @@ class HerramientaListView(View):
         }
         return render(request, "listado-herramientas.html", context)
 
-#Usamos una vista basada en función esta vez, para mostrar las tareas asociadas a cada empleado    
-def empleado_tareas(request, nombre_url):           
-    empleado = get_object_or_404(Empleado, nombre=nombre_url) 
-    
-    tareas = empleado.trabajadores.all()
-    
-    context = {
-        "empleado": empleado,
-        "tareas": tareas
-    }
-    return render(request, "empleado-tareas.html", context)
-
-
-
 # DETAIL VIEWS:
 class EmpleadoDetailView(DetailView):
     model = Empleado 

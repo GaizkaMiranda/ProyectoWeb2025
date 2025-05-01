@@ -1,28 +1,39 @@
 {% extends "base.html" %}
 
-
-{% block contenido %}
-    <h1>Lista de proyectos</h1>
-    <ul class="list-view"> 
-        {% for proyecto in lista_proyectos %}  
-        <li><a href="{% url 'detalle_proyecto' proyecto.pk %}">{{ proyecto.nombre }}</a></li> 
-
-        {% endfor %} 
-    </ul>
-{% endblock %}
-
-
-{% block footer_contenido %}
-<div class="footerColumn">
-    <h3>Últimos tres proyectos</h3>
-    <ul>
+{% block listado_lateral %}
+<div class="sidebar-section">
+    <h3><i class="fas fa-project-diagram"></i> Últimos proyectos</h3>
+    <ul class="sidebar-list">
         {% for proyecto in ultimos_proyectos %}
             <li>
-                <a href="{% url 'detalle_proyecto' proyecto.pk %}">{{ proyecto.nombre }}</a>
+                <a href="{% url 'detalle_proyecto' proyecto.pk %}">
+                    {{ proyecto.nombre }}
+                    {% if proyecto.fecha_entrega %}
+                        <small>Entrega: {{ proyecto.fecha_entrega|date:"d/m/Y" }}</small>
+                    {% endif %}
+                </a>
             </li>
         {% empty %}
-            <li>No existen proyectos</li>
+            <li class="empty-message">No hay proyectos recientes</li>
         {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<div class="content-main">
+    <h1 class="page-title"><i class="fas fa-list"></i> Lista de proyectos</h1>
+    <ul class="list-view"> 
+        {% for proyecto in lista_proyectos %}  
+            <li class="list-item">
+                <a href="{% url 'detalle_proyecto' proyecto.pk %}">
+                    <span class="proyecto-nombre">{{ proyecto.nombre }}</span>
+                    {% if proyecto.estado %}
+                        <span class="proyecto-estado {{ proyecto.estado|lower }}">{{ proyecto.estado }}</span>
+                    {% endif %}
+                </a>
+            </li> 
+        {% endfor %} 
     </ul>
 </div>
 {% endblock %}

@@ -1,26 +1,29 @@
 {% extends "base.html" %}
 
-{% block contenido %}
-    <h1>Lista de herramientas</h1>
-    <ul class="list-view"> 
-        {% for herramienta in lista_herramientas %}  
-            <li><a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a></li> 
-        {% endfor %} 
-    </ul>
-{% endblock %}
-
-{% block footer_contenido %}
-<div class="footerColumn">
-    <h3>Últimas tres herramientas</h3>
-    <ul>
+{% block listado_lateral %}
+<div class="sidebar-section">
+    <h3>Últimas herramientas</h3>
+    <ul class="sidebar-list">
         {% for herramienta in ultimas_herramientas %}
             <li>
                 <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>
             </li>
         {% empty %}
-            <li>No existen herramientas</li>
+            <li>No hay herramientas recientes</li>
         {% endfor %}
     </ul>
 </div>
 {% endblock %}
 
+{% block contenido %}
+<div class="content-main">
+    <h1>Lista de herramientas</h1>
+    <ul class="list-view"> 
+        {% for herramienta in lista_herramientas %}  
+            <li class="list-item">
+                <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>
+            </li> 
+        {% endfor %} 
+    </ul>
+</div>
+{% endblock %}

@@ -3,6 +3,7 @@
 {%block title %} Fast menu{% endblock %}
 
 {%block contenido%} 
+<div class="form-container">
 
 <h2> Crear un nuevo proyecto </h2>
 <form action="{% url 'crear-proyecto'%}" method="POST">
@@ -10,11 +11,12 @@
     {% csrf_token %}
     <button type="submit"> Guardar </button>
 </form>
+</div>
 {%endblock %}
 
 {% block footer_contenido %}
 <div class="footerColumn">
-    <h3>Últimos tres proyectos:</h3>
+    <h3>Últimos tres proyectos</h3>
     <ul>
         {% for proyecto in ultimos_proyectos %}
             <li>

@@ -1,24 +1,39 @@
 {% extends "base.html" %}
-{% block contenido %}
-    <h1>Lista de empleados</h1>
-    <ul class="list-view"> 
-        {% for empleado in lista_empleados %}  
-            <li><a href="{% url 'detalle_empleado' empleado.pk %}">{{ empleado.nombre }}</a></li> 
-        {% endfor %} 
-    </ul>
-{% endblock %}
 
-{% block footer_contenido %}
-<div class="footerColumn">
-    <h3>Últimos tres empleados:</h3>
-    <ul>
+{% block listado_lateral %}
+<div class="sidebar-section">
+    <h3><i class="fas fa-users"></i> Últimos empleados</h3>
+    <ul class="sidebar-list">
         {% for empleado in ultimos_empleados %}
             <li>
-                <a href="{% url 'detalle_empleado' empleado.pk %}">{{ empleado.nombre }}</a>
+                <a href="{% url 'detalle_empleado' empleado.pk %}">
+                    {{ empleado.nombre }}
+                    {% if empleado.puesto %}
+                        <small>{{ empleado.puesto }}</small>
+                    {% endif %}
+                </a>
             </li>
         {% empty %}
-            <li>No existen empleados</li>
+            <li class="empty-message">No hay empleados recientes</li>
         {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<div class="content-main">
+    <h1 class="page-title"><i class="fas fa-list-ol"></i> Lista de empleados</h1>
+    <ul class="list-view"> 
+        {% for empleado in lista_empleados %}  
+            <li class="list-item">
+                <a href="{% url 'detalle_empleado' empleado.pk %}">
+                    <span class="empleado-nombre">{{ empleado.nombre }}</span>
+                    {% if empleado.departamento %}
+                        <span class="empleado-departamento">{{ empleado.departamento }}</span>
+                    {% endif %}
+                </a>
+            </li> 
+        {% endfor %} 
     </ul>
 </div>
 {% endblock %}
