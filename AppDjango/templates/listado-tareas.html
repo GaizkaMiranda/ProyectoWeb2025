@@ -3,7 +3,7 @@
 {% block listado_lateral %}
 <div class="sidebar-section">
     <h3><i class="fas fa-tasks"></i> Últimas tareas</h3>
-    <ul class="sidebar-list">
+    <ul class="list-view">
         {% for tarea in ultimas_tareas %}
             <li>
                 <a href="{% url 'detalle_tarea' tarea.pk %}">

@@ -3,7 +3,7 @@
 {% block listado_lateral %}
 <div class="sidebar-section">
     <h3>Últimas herramientas</h3>
-    <ul class="sidebar-list">
+    <ul class="list-view">
         {% for herramienta in ultimas_herramientas %}
             <li>
                 <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>

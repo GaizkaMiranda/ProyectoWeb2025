@@ -3,7 +3,7 @@
 {% block listado_lateral %}
 <div class="sidebar-section">
     <h3><i class="fas fa-project-diagram"></i> Últimos proyectos</h3>
-    <ul class="sidebar-list">
+    <ul class="list-view">
         {% for proyecto in ultimos_proyectos %}
             <li>
                 <a href="{% url 'detalle_proyecto' proyecto.pk %}">

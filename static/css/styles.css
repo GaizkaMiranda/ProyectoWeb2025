@@ -216,6 +216,16 @@ background-color: #003f7f;
 
 /*------------------Lista--------------------------*/
 
+.sidebar-section h3{
+    align-items: center;
+}
+
+/* Estilo para el mensaje cuando no hay empleados recientes */
+.empty-message {
+    color: #6c757d;
+    font-style: italic;
+}
+
 .list-view {
  list-style-type: none; 
  width: 120px;  
