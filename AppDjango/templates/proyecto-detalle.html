@@ -19,9 +19,9 @@
                     </ul>
                 </li>
             </ul>
-            <a href="{% url 'proyecto_update' proyecto.pk %}" class="boton-editar">Editar proyecto</a>
             <form method="post" action="{% url 'proyecto_delete' proyecto.pk %}">
                 {% csrf_token %}
+                <a href="{% url 'proyecto_update' proyecto.pk %}" class="boton-editar">Editar proyecto</a>
                 <button type="submit" class="boton-borrar">Eliminar proyecto</button>
             </form>
 

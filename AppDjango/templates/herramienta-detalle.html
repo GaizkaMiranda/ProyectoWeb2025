@@ -9,9 +9,10 @@
                 <li><strong>Descripción de la herramienta:</strong> {{ herramienta.descripcion }} </li>
                 <li><strong>Horas disponibles de la herramienta:</strong> {{ herramienta.horas_disponibilidad }}</li>
             </ul>
-            <a href="{% url 'herramienta_update' herramienta.pk %}" class="boton-editar">Editar herramienta</a>
+            
             <form method="post" action="{% url 'herramienta_delete' herramienta.pk %}">
                 {% csrf_token %}
+                <a href="{% url 'herramienta_update' herramienta.pk %}" class="boton-editar">Editar herramienta</a>
                 <button type="submit" class="boton-borrar">Eliminar herramienta</button>
             </form>
 

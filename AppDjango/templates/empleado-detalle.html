@@ -10,10 +10,9 @@
             <li><strong>Email:</strong> {{ empleado.email }}</li>
             <li><strong>Telefono:</strong> {{ empleado.telefono }}</li>
         </ul>
-        <a href="{% url 'empleado_update' empleado.pk %}" class="boton-editar">Editar empleado</a>
-
         <form method="post" action="{% url 'empleado_delete' empleado.pk %}">
             {% csrf_token %}
+            <a href="{% url 'empleado_update' empleado.pk %}" class="boton-editar">Editar empleado</a>
             <button type="submit" class="boton-borrar">Eliminar empleado</button>
         </form>
 
