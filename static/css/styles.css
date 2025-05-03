@@ -227,8 +227,9 @@ background-color: #003f7f;
 }
 
 .list-view {
- list-style-type: none; 
- width: 120px;  
+    list-style-type: none;
+    width: 100%; 
+    max-width: 250px; 
 }
 
 .list-view li {
@@ -247,6 +248,56 @@ background-color: #003f7f;
 .list-view li:hover {
     background-color: #b8dcff;
 }
+
+
+/* Estilos para centrar las tareas en proceso */
+.tareas-contenedor {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+}
+
+
+.tareas-en-proceso {
+    margin-left: 490px;
+    background-color: #f0f4ff;
+    border: 1px solid #b3c7ff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 300px;
+    min-width: 250px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.tareas-en-proceso h2 {
+    text-align: center;
+    color: #2a4db3;
+    margin-bottom: 1rem;
+}
+
+.tareas-en-proceso .list-view {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tareas-en-proceso .list-item a {
+    display: block;
+    padding: 0.6rem 1rem;
+    background-color: #fff;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.tareas-en-proceso .list-item a:hover {
+    background-color: #e6ecff;
+}
+
 
 /*------------------------Detail View-------------------------*/
 

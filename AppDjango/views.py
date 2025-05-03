@@ -24,9 +24,11 @@ class ProyectoListView(View):
     
 class TareaListView(View):
     def get(self, request):
+        tareas_en_proceso = Tarea.objects.filter(estado = "en_proceso").order_by("nombre")
         tareas = get_list_or_404(Tarea.objects.order_by("nombre"))
         ultimas_tareas = Tarea.objects.order_by('-id')[:3]
         context = {
+            "tareas_en_proceso": tareas_en_proceso,
             "lista_tareas": tareas,
             "ultimas_tareas": ultimas_tareas,
         }
