@@ -221,6 +221,10 @@ background-color: #003f7f;
 }
 
 /* Estilo para el mensaje cuando no hay empleados recientes */
+
+.content-main{
+    padding-left: 50px;
+}
 .empty-message {
     color: #6c757d;
     font-style: italic;
