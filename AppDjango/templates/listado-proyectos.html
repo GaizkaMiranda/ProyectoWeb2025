@@ -36,4 +36,20 @@
         {% endfor %} 
     </ul>
 </div>
+<div class="tareas-en-proceso">
+    <h2>Proyectos de alto presupuesto</h2>
+    <ul class="list-view">
+        {% for proyecto in lista_proyectos %}
+            {% if proyecto.presupuesto > 500 %}
+                <li class="list-item">
+                    <a href="{% url 'detalle_proyecto' proyecto.pk %}">
+                        {{ proyecto.nombre }} ({{ proyecto.presupuesto }} €)
+                    </a>
+                </li>
+            {% endif %}
+        {% empty %}
+            <li>No hay proyectos de alto presupuesto</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

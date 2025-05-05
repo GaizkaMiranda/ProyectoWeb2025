@@ -26,4 +26,20 @@
         {% endfor %} 
     </ul>
 </div>
+<div class="tareas-en-proceso">
+    <h2>Herramientas con baja disponibilidad</h2>
+    <ul class="list-view">
+        {% for herramienta in lista_herramientas %}
+            {% if herramienta.horas_disponibilidad < 5 %}
+                <li class="list-item">
+                    <a href="{% url 'detalle_herramienta' herramienta.pk %}">
+                        {{ herramienta.nombre }} ({{ herramienta.horas_disponibilidad }} horas)
+                    </a>
+                </li>
+            {% endif %}
+        {% empty %}
+            <li>No hay herramientas con baja disponibilidad</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
