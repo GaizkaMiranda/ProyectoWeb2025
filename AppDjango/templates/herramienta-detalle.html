@@ -8,6 +8,9 @@
                 <li><strong>Nombre de la herramienta:</strong> {{ herramienta.nombre }}</li>
                 <li><strong>Descripción de la herramienta:</strong> {{ herramienta.descripcion }} </li>
                 <li><strong>Horas disponibles de la herramienta:</strong> {{ herramienta.horas_disponibilidad }}</li>
+                <li><strong>Fecha de compra de la herramienta:</strong> {{ herramienta.fecha_compra }}</li>
+                <li><strong>Caducidad de la garantía de la herramienta:</strong> {{ herramienta.caducidad_garantia }}</li>
+                <li><strong>Departamento propietario de la herramienta:</strong> {{ herramienta.pertenencia }}</li>
             </ul>
             
             <form method="post" action="{% url 'herramienta_delete' herramienta.pk %}">

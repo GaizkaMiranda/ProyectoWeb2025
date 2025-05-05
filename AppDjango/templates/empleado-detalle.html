@@ -9,6 +9,7 @@
             <li><strong>Apellidos:</strong> {{ empleado.apellidos }}</li>
             <li><strong>Email:</strong> {{ empleado.email }}</li>
             <li><strong>Telefono:</strong> {{ empleado.telefono }}</li>
+            <li><strong>Disponibilidad:</strong> {{ empleado.disponibilidad }}</li>
         </ul>
         <form method="post" action="{% url 'empleado_delete' empleado.pk %}">
             {% csrf_token %}
