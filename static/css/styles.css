@@ -64,7 +64,7 @@ h2 {
 
 /* Footer */
 
-.footerContainer {
+.contenedor-footer {
     width: 100%;
     margin: 0 auto; 
     display: flex;
@@ -73,7 +73,7 @@ h2 {
     background-color: #e6e5e5;
 }
 
-.footerColumn {
+.columna-footer {
     flex-grow: 1;
     flex-shrink: 1;
     margin: 0 15px;
@@ -82,30 +82,30 @@ h2 {
 }
 
 
-.footerColumn h3 {
+.columna-footer h3 {
 	font-size: 20px;
 	margin-bottom: 20px;
 	text-align: center;
 }
 
-.footerColumn ul {
+.columna-footer ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	margin-bottom: 30px;
 }
 
-.footerColumn li {
+.columna-footer li {
 	margin-bottom: 15px;
 }
 
-.footerColumn a {
+.columna-footer a {
 	color: rgb(10, 7, 7);
 	text-decoration: none;
 	/* Saco de este enlace la idea, ya que antes de esto, toda la imagen quedaba como enlace y estaba feo https://www.hostgator.mx/blog/quitar-subrayado-enlace/ */
 }
 
-.footerColumn .nosotros a {
+.columna-footer .nosotros a {
 	display: inline-block;
 	text-align: center;
 	width: 45px;
@@ -123,16 +123,16 @@ h2 {
 	color: #fff;
 }
 
-.footerColumn .nosotros .social-icons a img {
+.columna-footer .nosotros .iconos-redes a img {
     width: 40px;
     height: 40px;
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
     border-radius: 50%; /* Opcional: hace que las imágenes sean circulares */
-  }
+}
   
-  .footerColumn .nosotros .social-icons a img:hover {
+.columna-footer .nosotros .iconos-redes a img:hover {
     transform: scale(1.1); /* Efecto de zoom al pasar el cursor (Sacado de la siguiente pagina: https://developer.mozilla.org/es/docs/Web/CSS/transform ) */
-  }
+}
 
 
 
@@ -215,17 +215,16 @@ background-color: #003f7f;
 }
 
 /*------------------Lista--------------------------*/
+.content-main{
+    padding-left: 50px;
+}
 
 .sidebar-section h3{
     align-items: center;
 }
 
 /* Estilo para el mensaje cuando no hay empleados recientes */
-
-.content-main{
-    padding-left: 50px;
-}
-.empty-message {
+.mensaje-vacio {
     color: #6c757d;
     font-style: italic;
 }

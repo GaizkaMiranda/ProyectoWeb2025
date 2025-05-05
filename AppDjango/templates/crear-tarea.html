@@ -3,28 +3,27 @@
 {%block title %} Fast menu{% endblock %}
 
 {%block contenido%} 
-<div class="form-container">
-
-<h2> Crear una  nueva tarea </h2>
-<form action="{% url 'crear-tarea'%}" method="POST">
-    {{form.as_p}}
-    {% csrf_token %}
-    <button type="submit"> Guardar </button>
-</form>
-</div>
+    <div class="form-container">
+        <h2> Crear una  nueva tarea </h2>
+        <form action="{% url 'crear-tarea'%}" method="POST">
+            {{form.as_p}}
+            {% csrf_token %}
+            <button type="submit"> Guardar </button>
+        </form>
+    </div>
 {%endblock %}
 
 {% block footer_contenido %}
-<div class="footerColumn">
-    <h3>Últimas tres tareas</h3>
-    <ul>
-        {% for tarea in ultimas_tareas %}
-            <li>
-                <a href="{% url 'detalle_tarea' tarea.pk %}">{{ tarea.nombre }}</a>
-            </li>
-        {% empty %}
-            <li>No existen tareas</li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="footerColumn">
+        <h3>Últimas tres tareas</h3>
+        <ul>
+            {% for tarea in ultimas_tareas %}
+                <li>
+                    <a href="{% url 'detalle_tarea' tarea.pk %}">{{ tarea.nombre }}</a>
+                </li>
+            {% empty %}
+                <li>No existen tareas</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

@@ -9,7 +9,7 @@
                 <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>
             </li>
         {% empty %}
-            <li>No hay herramientas recientes</li>
+            <li class="mensaje-vacio">No hay herramientas recientes</li>
         {% endfor %}
     </ul>
 </div>
