@@ -48,6 +48,7 @@
                 {% block footer_contenido %}
                     <!-- aquí cada página pondrá lo suyo: empleados, tareas, proyectos o herramientas -->
                 {% endblock %}
+    
                 <div class="columna-footer">
                     <h3>Datos de contacto</h3>
                     <ul>
@@ -56,20 +57,28 @@
                         <li>Correo electrónico: Deustotil@deusto.eus</li>
                     </ul>
                 </div>
+    
                 <div class="columna-footer">
                     <h3>Sobre nosotros</h3>
                     <div class="nosotros">
                         <div class="iconos-redes">
-                            <a href="https://www.linkedin.com/"><img src="{% static '/images/linkedin.png' %}" alt="LinkedIn"></a>
-                            <a href="https://x.com/"><img src="{% static '/images/twitter.png' %}" alt="Twitter"></a>
-                            <a href="https://github.com/GaizkaMiranda/ProyectoWeb2025"><img src="{% static '/images/github.png' %}" alt="GitHub"></a>
+                            <a href="https://www.linkedin.com/">
+                                <img src="{% static '/images/linkedin.png' %}" alt="LinkedIn">
+                            </a>
+                            <a href="https://x.com/">
+                                <img src="{% static '/images/twitter.png' %}" alt="Twitter">
+                            </a>
+                            <a href="https://github.com/GaizkaMiranda/ProyectoWeb2025">
+                                <img src="{% static '/images/github.png' %}" alt="GitHub">
+                            </a>
                         </div>
                     </div>
                 </div>
-    </div> <!-- Este div hay que quitarlo sin mover el css--> 
-        <div class="copyright">
-            <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
-        </div>
+            </div>
+            
+            <div class="copyright">
+                <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
+            </div>
         {% endblock %}
     </footer>
 </body>
