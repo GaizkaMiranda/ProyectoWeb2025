@@ -177,6 +177,18 @@ h2 {
     background-color: #b8dcff;
 }
 
+/*  */
+.empleados-contenedor {
+    display: flex;
+    justify-content: center;        /* Centra horizontalmente los dos bloques */
+    align-items: flex-start;        /* Alinea por arriba */
+    gap: 100px;                      /* Espacio entre los bloques */
+    flex-wrap: wrap;                /* Si no caben, que se apilen verticalmente */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* Estilos para últimos tres empleados/tareas/herramientas/proyectos */
 
 /*-----------------------Formulario----------------------------*/
@@ -216,9 +228,16 @@ background-color: #003f7f;
 }
 
 /*------------------Lista--------------------------*/
-.content-main{
-    padding-left: 50px;
+.content-main {
+    flex: 1 1 500px;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
 }
+
 
 .sidebar-section h3{
     align-items: center;
@@ -264,8 +283,8 @@ background-color: #003f7f;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     background-color: #f0f4ff;
     border: 1px solid #b3c7ff;
+    
 }
-
 
 
 /* Estilos para centrar las tareas en proceso */
