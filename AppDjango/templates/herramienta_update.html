@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block contenido %}
     <h2>Editar herramienta</h2>
-    <form action="{% url 'herramienta_update' herramienta.pk %}" method="post">
-
-        {% csrf_token %}
-        {{ formulario.errors }}
-        {{ formulario.as_ul }}
-        <input type="submit" value="Editar herramienta"/>
-    </form>
+    <div class="form-container">
+        <form action="{% url 'herramienta_update' herramienta.pk %}" method="post">
+            {% csrf_token %}
+            {{ formulario.errors }}
+            {{ formulario.as_ul }}
+            <input type="submit" value="Editar herramienta"/>
+        </form>
+    </div>
 {% endblock %}

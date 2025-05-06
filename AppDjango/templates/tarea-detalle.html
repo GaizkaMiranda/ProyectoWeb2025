@@ -28,18 +28,3 @@
         <p>Tarea no encontrada.</p>
     {% endif %}
 {% endblock %}
-
-{% block footer_contenido %}
-<div class="footerColumn">
-    <h3>Últimas tres tareas</h3>
-    <ul>
-        {% for tarea in ultimas_tareas %}
-            <li>
-                <a href="{% url 'detalle_tarea' tarea.pk %}">{{ tarea.nombre }}</a>
-            </li>
-        {% empty %}
-            <li>No existen tareas</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock %}
