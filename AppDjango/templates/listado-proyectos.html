@@ -1,55 +1,62 @@
 {% extends "base.html" %}
 
+{% block contenido %}
+<div class="lista-contenedor">
+    <div class="contenido-principal">
+        <h1 class="page-title"><i></i> Lista de proyectos</h1>
+        <ul class="lista"> 
+            {% for proyecto in lista_proyectos %}  
+                <li class="item-lista">
+                    <a href="{% url 'detalle_proyecto' proyecto.pk %}">
+                        <span class="proyecto-nombre">{{ proyecto.nombre }}</span>
+                        {% if proyecto.estado %}
+                            <span class="proyecto-estado {{ proyecto.estado|lower }}">{{ proyecto.estado }}</span>
+                        {% endif %}
+                    </a>
+                </li> 
+            {% endfor %} 
+        </ul>
+    </div>
+
+    <div class="funcionalidad-extra">
+        <h2>Proyectos de alto presupuesto</h2>
+        <ul class="lista">
+            {% for proyecto in lista_proyectos %}
+                {% if proyecto.presupuesto > 500 %}
+                    <li class="item-lista">
+                        <a href="{% url 'detalle_proyecto' proyecto.pk %}">
+                            {{ proyecto.nombre }} ({{ proyecto.presupuesto }} €)
+                        </a>
+                    </li>
+                {% endif %}
+            {% empty %}
+                <li>No hay proyectos de alto presupuesto</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+
 {% block listado_lateral %}
-<div class="sidebar-section">
-    <h3><i></i> Últimos proyectos</h3>
-    <ul class="list-view">
-        {% for proyecto in ultimos_proyectos %}
-            <li>
-                <a href="{% url 'detalle_proyecto' proyecto.pk %}">
-                    {{ proyecto.nombre }}
-                    {% if proyecto.fecha_entrega %}
-                        <small>Entrega: {{ proyecto.fecha_entrega|date:"d/m/Y" }}</small>
-                    {% endif %}
-                </a>
-            </li>
-        {% empty %}
-            <li class="mensaje-vacio">No hay proyectos recientes</li>
-        {% endfor %}
-    </ul>
+<div class="lista-contenedor">
+    <div class="seccion-lateral">
+        <h3><i></i> Últimos proyectos</h3>
+        <ul class="lista">
+            {% for proyecto in ultimos_proyectos %}
+                <li>
+                    <a href="{% url 'detalle_proyecto' proyecto.pk %}">
+                        {{ proyecto.nombre }}
+                        {% if proyecto.fecha_entrega %}
+                            <small>Entrega: {{ proyecto.fecha_entrega|date:"d/m/Y" }}</small>
+                        {% endif %}
+                    </a>
+                </li>
+            {% empty %}
+                <li class="mensaje-vacio">No hay proyectos recientes</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}
 
-{% block contenido %}
-<div class="content-main">
-    <h1 class="page-title"><i></i> Lista de proyectos</h1>
-    <ul class="list-view"> 
-        {% for proyecto in lista_proyectos %}  
-            <li class="list-item">
-                <a href="{% url 'detalle_proyecto' proyecto.pk %}">
-                    <span class="proyecto-nombre">{{ proyecto.nombre }}</span>
-                    {% if proyecto.estado %}
-                        <span class="proyecto-estado {{ proyecto.estado|lower }}">{{ proyecto.estado }}</span>
-                    {% endif %}
-                </a>
-            </li> 
-        {% endfor %} 
-    </ul>
-</div>
-<div class="alto-presupuesto">
-    <h2>Proyectos de alto presupuesto</h2>
-    <ul class="list-view">
-        {% for proyecto in lista_proyectos %}
-            {% if proyecto.presupuesto > 500 %}
-                <li class="list-item">
-                    <a href="{% url 'detalle_proyecto' proyecto.pk %}">
-                        {{ proyecto.nombre }} ({{ proyecto.presupuesto }} €)
-                    </a>
-                </li>
-            {% endif %}
-        {% empty %}
-            <li>No hay proyectos de alto presupuesto</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock %}

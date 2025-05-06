@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 
 {%block contenido%} 
-    <div class="form-container">
+    <div class="formulario">
         <h2> Crear una  nueva herramienta </h2>
         <form action="{% url 'crear_herramienta'%}" method="POST">
             {{form.as_p}}
@@ -12,7 +12,7 @@
 {%endblock %}
 
 {% block footer_contenido %}
-    <div class="footerColumn">
+    <div class="ultimos-registros">
         <h3>Últimas tres herramientas</h3>
         <ul>
             {% for herramienta in ultimas_herramientas %}

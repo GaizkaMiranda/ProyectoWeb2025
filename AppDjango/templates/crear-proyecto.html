@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 
 {%block contenido%} 
-    <div class="form-container">
+    <div class="formulario">
         <h2> Crear un nuevo proyecto </h2>
         <form action="{% url 'crear-proyecto'%}" method="POST">
             {{form.as_p}}
@@ -12,7 +12,7 @@
 {%endblock %}
 
 {% block footer_contenido %}
-    <div class="footerColumn">
+    <div class="ultimos-registros">
         <h3>Últimos tres proyectos</h3>
         <ul>
             {% for proyecto in ultimos_proyectos %}

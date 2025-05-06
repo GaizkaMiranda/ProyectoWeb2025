@@ -1,45 +1,54 @@
 {% extends "base.html" %}
 
-{% block listado_lateral %}
-<div class="sidebar-section">
-    <h3>Últimas herramientas</h3>
-    <ul class="list-view">
-        {% for herramienta in ultimas_herramientas %}
-            <li>
-                <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>
-            </li>
-        {% empty %}
-            <li class="mensaje-vacio">No hay herramientas recientes</li>
-        {% endfor %}
-    </ul>
+{% block contenido %}
+<div class="lista-contenedor">
+    <div class="contenido-principal">
+        <h1>Lista de herramientas</h1>
+        <ul class="lista"> 
+            {% for herramienta in lista_herramientas %}  
+                <li class="item-lista">
+                    <a href="{% url 'detalle_herramienta' herramienta.pk %}">
+                        {{ herramienta.nombre }}
+                    </a>
+                </li> 
+            {% endfor %} 
+        </ul>
+    </div>
+
+    <div class="funcionalidad-extra">
+        <h2>Herramientas con baja disponibilidad</h2>
+        <ul class="lista">
+            {% for herramienta in lista_herramientas %}
+                {% if herramienta.horas_disponibilidad < 5 %}
+                    <li class="item-lista">
+                        <a href="{% url 'detalle_herramienta' herramienta.pk %}">
+                            {{ herramienta.nombre }} ({{ herramienta.horas_disponibilidad }} horas)
+                        </a>
+                    </li>
+                {% endif %}
+            {% empty %}
+                <li>No hay herramientas con baja disponibilidad</li>
+            {% endfor %}
+        </ul>   
+    </div>
 </div>
 {% endblock %}
 
-{% block contenido %}
-<div class="content-main">
-    <h1>Lista de herramientas</h1>
-    <ul class="list-view"> 
-        {% for herramienta in lista_herramientas %}  
-            <li class="list-item">
-                <a href="{% url 'detalle_herramienta' herramienta.pk %}">{{ herramienta.nombre }}</a>
-            </li> 
-        {% endfor %} 
-    </ul>
-</div>
-<div class="baja-disponibilidad">
-    <h2>Herramientas con baja disponibilidad</h2>
-    <ul class="list-view">
-        {% for herramienta in lista_herramientas %}
-            {% if herramienta.horas_disponibilidad < 5 %}
-                <li class="list-item">
+{% block listado_lateral %}
+<div class="lista-contenedor">
+    <div class="seccion-lateral">
+        <h3>Últimas herramientas</h3>
+        <ul class="lista">
+            {% for herramienta in ultimas_herramientas %}
+                <li>
                     <a href="{% url 'detalle_herramienta' herramienta.pk %}">
-                        {{ herramienta.nombre }} ({{ herramienta.horas_disponibilidad }} horas)
+                        {{ herramienta.nombre }}
                     </a>
                 </li>
-            {% endif %}
-        {% empty %}
-            <li>No hay herramientas con baja disponibilidad</li>
-        {% endfor %}
-    </ul>   
+            {% empty %}
+                <li class="mensaje-vacio">No hay herramientas recientes</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}

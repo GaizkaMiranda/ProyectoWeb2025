@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block contenido %}
     <h2>Editar proyecto</h2>
-    <div class="form-container">
+    <div class="formulario">
         <form action="{% url 'proyecto_update' proyecto.pk %}" method="post">
             {% csrf_token %}
             {{ formulario.errors }}

@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
 {%block contenido%} 
-    <div class="form-container">
+    <div class="formulario">
         <h2> Crear una  nueva tarea </h2>
         <form action="{% url 'crear-tarea'%}" method="POST">
             {{form.as_p}}
@@ -11,7 +11,7 @@
 {%endblock %}
 
 {% block footer_contenido %}
-    <div class="footerColumn">
+    <div class="ultimos-registros">
         <h3>Últimas tres tareas</h3>
         <ul>
             {% for tarea in ultimas_tareas %}

@@ -1,55 +1,59 @@
 {% extends "base.html" %}
 
-{% block listado_lateral %}
-<div class="sidebar-section">
-    <h3><i></i> Últimas tareas</h3>
-    <ul class="list-view">
-        {% for tarea in ultimas_tareas %}
-            <li>
-                <a href="{% url 'detalle_tarea' tarea.pk %}">
-                    {{ tarea.nombre }}
-                </a>
-            </li>
-        {% empty %}
-            <li class="mensaje-vacio">No hay tareas recientes</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock %}
-
 {% block contenido %}
-<div class="content-main">
-    <h1 class="page-title"><i></i> Lista de tareas</h1>
+<div class="lista-contenedor">
+    <div class="contenido-principal">
+        <h1 class="page-title"><i></i> Lista de tareas</h1>
 
-    <div class="tareas-contenedor">
-        <div class="tareas-listado">
-            <ul class="list-view"> 
-                {% for tarea in lista_tareas %}  
-                    <li class="list-item">
-                        <a href="{% url 'detalle_tarea' tarea.pk %}">
-                            {{ tarea.nombre }}
-                            {% if tarea.estado %}
-                                ({{ tarea.estado }})
-                            {% endif %}
-                        </a>
-                    </li> 
-                {% endfor %} 
-            </ul>
+        <div class="tareas-contenedor">
+            <div class="tareas-listado">
+                <ul class="lista"> 
+                    {% for tarea in lista_tareas %}  
+                        <li class="item-lista">
+                            <a href="{% url 'detalle_tarea' tarea.pk %}">
+                                {{ tarea.nombre }}
+                                {% if tarea.estado %}
+                                    ({{ tarea.estado }})
+                                {% endif %}
+                            </a>
+                        </li> 
+                    {% endfor %} 
+                </ul>
+            </div>
         </div>
+    </div>
 
-        <div class="tareas-en-proceso">
-            <h2><i></i> Tareas en proceso</h2>
-            <ul class="list-view">
-                {% for tarea in tareas_en_proceso %}
-                    <li class="list-item">
-                        <a href="{% url 'detalle_tarea' tarea.pk %}">{{ tarea.nombre }}</a>
-                    </li>
-                {% empty %}
-                    <li class="empty-message">No hay tareas en proceso actualmente.</li>
-                {% endfor %}
-            </ul>
-        </div>
+    <div class="funcionalidad-extra">
+        <h2><i></i>  Tareas en proceso </h2>
+        <ul class="lista">
+            {% for tarea in tareas_en_proceso %}
+                <li class="item-lista">
+                    <a href="{% url 'detalle_tarea' tarea.pk %}">{{ tarea.nombre }}</a>
+                </li>
+            {% empty %}
+                <li class="empty-message">No hay tareas en proceso actualmente.</li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 
+{% endblock %}
+
+{% block listado_lateral %}
+<div class="lista-contenedor">
+    <div class="seccion-lateral">
+        <h3><i></i> Últimas tareas</h3>
+        <ul class="lista">
+            {% for tarea in ultimas_tareas %}
+                <li>
+                    <a href="{% url 'detalle_tarea' tarea.pk %}">
+                        {{ tarea.nombre }}
+                    </a>
+                </li>
+            {% empty %}
+                <li class="mensaje-vacio">No hay tareas recientes</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}
