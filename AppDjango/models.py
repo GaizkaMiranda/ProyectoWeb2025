@@ -32,8 +32,7 @@ PRIORIDAD_ELECCION = [
 #DISPONIBILIDAD DE LA QUE DISPONE X EMPLEADO
 EMPLEADO_DISPONIBILIDAD = [
         ("disponible", "Disponible"),
-        ("no_disponible", "No Disponible"),
-        ("baja", "Baja Médica"),
+        ("baja médica", "Baja Médica"),
         ("vacaciones", "Vacaciones"),
         ("viaje", "Viaje"),
     ]

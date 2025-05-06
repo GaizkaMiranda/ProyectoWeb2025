@@ -36,4 +36,28 @@
         {% endfor %} 
     </ul>
 </div>
+<div class="empleados-no-disponibles">
+    <h2>Empleados no disponibles</h2>
+    <ul class="list-view">
+        {% for empleado in lista_empleados %}
+            {% if empleado.disponibilidad == "vacaciones" or empleado.disponibilidad == "baja médica" or empleado.disponibilidad == "viaje" %}
+                <li class="list-item">
+                    <a href="{% url 'detalle_empleado' empleado.pk %}">
+                        {% if empleado.disponibilidad == "vacaciones" %}
+                            🌴
+                        {% elif empleado.disponibilidad == "baja médica" %}
+                            👨‍⚕️
+                        {% elif empleado.disponibilidad == "viaje" %}
+                            ✈️
+                        {% endif %}
+                        {{ empleado.nombre }} ({{ empleado.disponibilidad }})
+                    </a>
+                </li>
+            {% endif %}
+        {% empty %}
+            <li>Todos los empleados están disponibles</li>
+        {% endfor %}
+    </ul>
+</div>
+
 {% endblock %}

@@ -26,7 +26,7 @@
         {% endfor %} 
     </ul>
 </div>
-<div class="tareas-en-proceso">
+<div class="baja-disponibilidad">
     <h2>Herramientas con baja disponibilidad</h2>
     <ul class="list-view">
         {% for herramienta in lista_herramientas %}
@@ -40,6 +40,6 @@
         {% empty %}
             <li>No hay herramientas con baja disponibilidad</li>
         {% endfor %}
-    </ul>
+    </ul>   
 </div>
 {% endblock %}
