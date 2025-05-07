@@ -13,7 +13,17 @@
                 <li><strong>Responsable de la tarea:</strong> {{ tarea.responsable }} </li>
                 <li><strong>Nivel de responsabilidad:</strong> {{ tarea.n_responsabilidad }} </li>
                 <li><strong>Estado:</strong> {{ tarea.estado }} </li>
-                <li><strong>Herramientas:</strong> {{ tarea.herramientas }} </li>
+                <li><strong>Herramientas:</strong>
+                    {% if tarea.herramientas.all %}
+                      <ul>
+                        {% for herramienta in tarea.herramientas.all %}
+                          <li>{{ herramienta.nombre }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <span>No hay herramientas asignadas.</span>
+                    {% endif %}
+                  </li>
                 <li><strong>Notas:</strong> {{ tarea.notas }} </li>
             </ul>
             <form method="post" action="{% url 'tarea_delete' tarea.pk %}">
