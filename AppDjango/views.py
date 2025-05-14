@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout 
 from django.contrib.auth.decorators import login_required 
 
+
 # Create your views here.
 
 #Vamos a realizar las vistas basadas en CLASES para facilitar tanto la creación como la manipulación de estas

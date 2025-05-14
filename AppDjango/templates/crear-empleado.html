@@ -6,6 +6,9 @@
         <form action="{% url 'crear-empleado'%}" method="POST">
             {{form.as_p}}
             {% csrf_token %}
+            <div class="div-validar"></div>
+            <div id="mensaje-validacion" style="color: red; font-weight: bold; margin-top: 10px;"></div>
+
             <button type="submit"> Guardar </button>
         </form>
     </div>
