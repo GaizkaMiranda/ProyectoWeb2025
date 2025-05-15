@@ -11,18 +11,36 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+def vista_inicio(request):
+    return render(request, 'inicio.html')
+
 #Vamos a realizar las vistas basadas en CLASES para facilitar tanto la creación como la manipulación de estas
 
 # LIST VIEWS:
 class ProyectoListView(View):
     def get(self, request):
+        # Capturar el presupuesto desde la URL (?presupuesto=...)
+        presupuesto_minimo = request.GET.get('presupuesto', 500)
+        try:
+            presupuesto_minimo = float(presupuesto_minimo)
+        except ValueError:
+            presupuesto_minimo = 500  # Valor por defecto si viene mal
+
+        proyectos_alto_presupuesto = Proyecto.objects.filter(
+            presupuesto__gt=presupuesto_minimo
+        ).order_by('nombre')
+
         proyectos = Proyecto.objects.order_by("nombre")
-        ultimos_proyectos = Proyecto.objects.order_by('-id')[:3]  
+        ultimos_proyectos = Proyecto.objects.order_by('-id')[:3]
+
         context = {
             "lista_proyectos": proyectos,
-            "ultimos_proyectos": ultimos_proyectos,  
+            "ultimos_proyectos": ultimos_proyectos,
+            "presupuesto_minimo": presupuesto_minimo,
+            "alta_lista": proyectos_alto_presupuesto,
         }
         return render(request, "listado-proyectos.html", context)
+
     
 class TareaListView(View):
     def get(self, request):
@@ -377,6 +395,15 @@ def registro_view(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Cuenta creada para {username}')
             return redirect('login')
+        else:
+            messages.error(request, 'Error al crear la cuenta. Verifica los datos e intenta nuevamente.')
+    # si el metodo no es POST se crea una instancia vacia del formulario para que la pagina de registro se muestre
+    # correctamente, esto permite que la plantilla registro.html se renderice con un formulario vacio que el usuario
+    # pueda rellenar
+    else:
+        form = RegistroForm()
+    return render(request, 'registro.html', {'form': form})
+#tengo que crear el template
 
 
 # vista de cierre de sesion

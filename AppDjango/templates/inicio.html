@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    🏠 Página de Inicio | Deustotil Tech S.L.
+{% endblock %}
+
+{% block contenido %}
+<div class="inicio-contenedor">
+    <h1 class="titulo-inicio">Bienvenido/a a la plataforma de gestión de Deustotil Tech S.L.</h1>
+    <p class="descripcion-inicio">¿Qué te apetece gestionar hoy?</p>
+
+    <div class="navegacion-principal">
+        <ul class="menu-inicio">
+            <li><a href="{% url 'proyectos' %}" class="boton-enlace">📁 Ver Proyectos</a></li>
+            <li><a href="{% url 'empleados' %}" class="boton-enlace">👨‍💼 Ver Empleados</a></li>
+            <li><a href="{% url 'tareas' %}" class="boton-enlace">📝 Ver Tareas</a></li>
+            <li><a href="{% url 'herramientas' %}" class="boton-enlace">🔧 Ver Herramientas</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block listado_lateral %}
+<div class="seccion-lateral">
+    <h3>Accesos rápidos</h3>
+    <ul>
+        <li><a href="{% url 'crear-proyecto' %}">➕ Crear nuevo proyecto</a></li>
+        <li><a href="{% url 'crear-empleado' %}">➕ Añadir empleado</a></li>
+        <li><a href="{% url 'crear-tarea' %}">➕ Nueva tarea</a></li>
+        <li><a href="{% url 'crear_herramienta' %}">➕ Registrar herramienta</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+

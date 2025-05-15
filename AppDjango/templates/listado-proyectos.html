@@ -8,7 +8,14 @@
             {% for proyecto in lista_proyectos %}  
                 <li class="item-lista">
                     <a href="{% url 'detalle_proyecto' proyecto.pk %}">
-                        <span class="proyecto-nombre">{{ proyecto.nombre }}</span>
+                        <span class="proyecto-nombre">
+                            <strong>{{ proyecto.nombre }}</strong> de 
+                            {% for empleado in proyecto.empleados.all %}
+                                {{ empleado.nombre }} {{ empleado.apellidos }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                Sin empleados asignados
+                            {% endfor %}
+                        </span>
                         {% if proyecto.estado %}
                             <span class="proyecto-estado {{ proyecto.estado|lower }}">{{ proyecto.estado }}</span>
                         {% endif %}
@@ -19,23 +26,21 @@
     </div>
 
     <div class="funcionalidad-extra">
-        <h2>Proyectos de alto presupuesto</h2>
+        <h2>Proyectos de alto presupuesto (> {{ presupuesto_minimo }} €)</h2>  
+        <!-- hemos visto que &gt; es ">" , que significa greater than y es para no confundir con etiquetas html -->
         <ul class="lista">
-            {% for proyecto in lista_proyectos %}
-                {% if proyecto.presupuesto > 500 %}
-                    <li class="item-lista">
-                        <a href="{% url 'detalle_proyecto' proyecto.pk %}">
-                            {{ proyecto.nombre }} ({{ proyecto.presupuesto }} €)
-                        </a>
-                    </li>
-                {% endif %}
+            {% for proyecto in alta_lista %}
+                <li class="item-lista">
+                    <a href="{% url 'detalle_proyecto' proyecto.pk %}">
+                        {{ proyecto.nombre }} ({{ proyecto.presupuesto }} €)
+                    </a>
+                </li>
             {% empty %}
-                <li>No hay proyectos de alto presupuesto</li>
+                <li>No hay proyectos con presupuesto superior a {{ presupuesto_minimo }} €</li>
             {% endfor %}
         </ul>
     </div>
 </div>
-
 {% endblock %}
 
 {% block listado_lateral %}
@@ -59,4 +64,3 @@
     </div>
 </div>
 {% endblock %}
-

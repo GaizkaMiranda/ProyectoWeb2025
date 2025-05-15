@@ -17,6 +17,7 @@ header {
     padding: 20px;
     display: flex;
     align-items: center;
+    
 }
 
 nav {
@@ -151,19 +152,8 @@ h2 {
     display: flex; 
     justify-content: center; 
     margin-bottom: 30px; 
-
 }
 
-.menu-horizontal li a {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 15px;
-    border-radius: 4px;
-}
-
-.menu-horizontal li a:hover {
-    background-color: #b8dcff;
-}
 .menu-horizontal2 {
     list-style: none; /* Elimina los puntos de la lista */
     padding: 0;
@@ -172,16 +162,36 @@ h2 {
     justify-content: center; /* Centra la lista horizontalmente */
 }
 
+.menu-horizontal2 {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    left: -70px; /* Mueve el grupo hacia la izquierda */
+}
+
+
+.menu-horizontal2 li {
+    margin: 0 10px; /* espacio entre enlaces */
+}
+
 .menu-horizontal2 li a {
     text-decoration: none;
-    color: #333;
+    color: white;
     padding: 10px 15px;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 .menu-horizontal2 li a:hover {
     background-color: #b8dcff;
 }
+
+
 
 /*-----------------------Formulario----------------------------*/
 .formulario {
