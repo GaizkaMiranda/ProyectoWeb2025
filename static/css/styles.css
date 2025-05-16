@@ -483,6 +483,21 @@ input[type="password"]:focus {
     background-color: #27ae60;
 }
 
+.boton-crear {
+    background-color: #007bff; /* Azul Bootstrap */
+    color: #fff; /* Texto blanco */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.boton-crear:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+
 /* Mensajes */
 .messages {
     margin: 1.5rem 0;

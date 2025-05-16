@@ -5,7 +5,7 @@
 
         <div class="contenido-principal">
             <h1 class="page-title"><i></i> Lista de empleados</h1>
-            <a href="{% url 'crear-empleado' %}">Crear empleado</a>
+            <a href="{% url 'crear-empleado' %}" class="boton-crear">Crear empleado</a>
             <ul class="lista">
                 {% for empleado in lista_empleados %}
                     <li class="item-lista">
