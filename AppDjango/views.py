@@ -370,23 +370,41 @@ def UltimosTresEmpleados(request):
 #Vistas realizadas para la E3-E4
 # INICIO DE SESIÓN
 # ha sido útil: https://stackoverflow.com/questions/75401759/how-to-set-up-login-view-in-python-django
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:  
-            if user.is_staff:  # verifica que el usuario sea admin
-                login(request, user)
-                return redirect('proyectos')  # le ponemos que vaya a proyectos
-            # si el usuario no es admin:
-            else:
-                messages.error(request, 'No tienes permisos de administrador.')
-        # si la autenticacion es incorrecta:
-        else:
-            messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
-    return render(request, 'login.html') #de momento falta crearla
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
+def login_view(request):
+    # Si el usuario ya está autenticado, redirigir
+    if request.user.is_authenticated:
+        return redirect('proyectos')
+    
+    if request.method == 'POST':
+        username = request.POST.get('username', '').strip()
+        password = request.POST.get('password', '').strip()
+        
+        # Validación básica
+        if not username or not password:
+            messages.error(request, 'Todos los campos son obligatorios')
+        else:
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                if user.is_staff:  # Verifica que el usuario sea admin
+                    login(request, user)
+                    next_url = request.GET.get('next', 'inicio')
+                    return redirect(next_url)
+                else:
+                    messages.error(request, 'No tienes permisos de administrador.')
+            else:
+                messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
+    
+    # Contexto para el template
+    context = {
+        'title': 'Inicio de Sesión',
+        'messages': messages.get_messages(request)
+    }
+    return render(request, 'login.html', context)
 # vista del registro
 def registro_view(request):
     if request.method == 'POST':
@@ -407,8 +425,23 @@ def registro_view(request):
 #tengo que crear el template
 
 
-# vista de cierre de sesion
 @login_required(login_url='login')
 def logout_view(request):
+    """
+    Vista para cerrar sesión que:
+    1. Requiere que el usuario esté autenticado
+    2. Cierra la sesión actual
+    3. Muestra mensaje de confirmación
+    4. Redirige a la página de login
+    """
+    # Almacenamos el nombre de usuario para el mensaje
+    username = request.user.username
+    
+    # Cerramos la sesión
     logout(request)
+    
+    # Añadimos mensaje de confirmación
+    messages.success(request, f'Has cerrado sesión correctamente. ¡Hasta pronto, {username}!')
+    
+    # Redirigimos a la página de login
     return redirect('login')

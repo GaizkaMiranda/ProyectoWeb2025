@@ -1,25 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registro</title>
+    <title>Registro | Deustotil Tech S.L.</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-<h2>Registro</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn-enviar">Registrar</button>
-</form>
-<p>¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="link-registro">Inicia sesión aquí</a>.</p>
-<!-- Mostrar mensajes de error o exito si existen -->
-{% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
+<header class="site-header">
+    <img src="{% static '/images/LOGO.png' %}" alt="Logo" class="header-icon">
+</header>
+
+<div class="login-container">
+    <h2>Crear nueva cuenta</h2>
+    
+    <form method="post" class="registration-form">
+        {% csrf_token %}
+        
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}
+            <small class="form-help">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+            <div class="form-error">{{ error }}</div>
+            {% endfor %}
+        </div>
         {% endfor %}
-    </ul>
-{% endif %}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn-enviar">Registrarse</button>
+        </div>
+    </form>
+    
+    <div class="auth-redirect">
+        ¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="auth-link">Inicia sesión aquí</a>.
+    </div>
+    
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<footer>
+    <div class="contenedor-footer">
+        <div class="columna-footer">
+            <h3>Datos de contacto</h3>
+            <ul>
+                <li>Polígono Industrial Jundiz, C.jundiz, 3, Vitoria-Gasteiz</li>
+                <li>Número de teléfono: +34 635 547 710</li>
+                <li>Correo electrónico: Deustotil@deusto.eus</li>
+            </ul>
+        </div>
+
+        <div class="columna-footer">
+            <h3>Sobre nosotros</h3>
+            <div class="nosotros">
+                <div class="iconos-redes">
+                    <a href="https://www.linkedin.com/">
+                        <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn">
+                    </a>
+                    <a href="https://x.com/">
+                        <img src="{% static 'images/twitter.png' %}" alt="Twitter">
+                    </a>
+                    <a href="https://github.com/GaizkaMiranda/ProyectoWeb2025">
+                        <img src="{% static 'images/github.png' %}" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
+    </div>
+</footer>
 </body>
 </html>

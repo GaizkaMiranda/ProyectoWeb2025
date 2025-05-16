@@ -3,11 +3,10 @@
 <head>
     <title>Inicio de Sesión</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
-</head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"></head>
 <body>
 <header class="site-header">
-    <img src="{% static 'imagenes/LOGO.png' %}" alt="Logo" class="header-icon">
+    <img src="{% static 'images/LOGO.png' %}" alt="Logo" class="header-icon">
     <h1>⚙️Gestor - Deustronic S. L.⚙️</h1>
 </header>
 <h2>Inicio de Sesión</h2>
@@ -23,11 +22,13 @@
     </div>
 </form>
 {% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
 {% endif %}
 <footer>
         {% block footer %}
