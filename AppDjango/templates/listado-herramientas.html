@@ -4,6 +4,7 @@
 <div class="lista-contenedor">
     <div class="contenido-principal">
         <h1>Lista de herramientas</h1>
+        <a href="{% url 'crear_herramienta' %}">Crear herramienta</a>
         <ul class="lista"> 
             {% for herramienta in lista_herramientas %}  
                 <li class="item-lista">

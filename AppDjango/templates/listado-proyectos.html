@@ -4,6 +4,7 @@
 <div class="lista-contenedor">
     <div class="contenido-principal">
         <h1 class="page-title"><i></i> Lista de proyectos</h1>
+        <a href="{% url 'crear-proyecto' %}">Crear proyecto</a>
         <ul class="lista"> 
             {% for proyecto in lista_proyectos %}  
                 <li class="item-lista">
