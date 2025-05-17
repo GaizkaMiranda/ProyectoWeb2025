@@ -1,56 +1,61 @@
-const API_URL_EMPLEADOS = "http://127.0.0.1:8000/APIempleados"
+const API_URL_DETALLE_EMPLEADO = "http://127.0.0.1:8000/api/empleado/";
 
-const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
-const apiEndpoint = params.page ? `${API_URL_EMPLEADOS}?page=${params.page}` : API_URL_EMPLEADOS
-// ------------------------------------------- PROVEEDORES LISTVIEW -------------------------------------------
-console.log(params.page);
-fetch(apiEndpoint)
-    .then(response => response.json())
-    .then( json => {
-        addRowsEmpleadosLV(json);
-    });
+// Espera a que el DOM cargue completamente
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".detalle-empleado").forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault(); // evita que el enlace recargue la página
 
-function addRowsEmpleadosLV(empleados) {
-    tbody = document.querySelector("#fetchEmpleadosLV");
-    if(tbody) {
-        empleados.forEach(element => {
-            tbody.appendChild(createEmpleadosLVRow(element))
+            const li = this.closest(".item-lista");
+
+            const nombre = li.dataset.nombre;
+            const disponibilidad = li.dataset.disponibilidad || "No especificada";
+            const telefono = li.dataset.telefono || "No especificado";
+
+            // Actualiza el contenido del contenedor de detalles
+            document.getElementById("detalle-nombre").textContent = nombre;
+            document.getElementById("detalle-disponibilidad").textContent = disponibilidad;
+            document.getElementById("detalle-telefono").textContent = telefono;
+
+            // Muestra el contenedor si está oculto
+            document.getElementById("detalles-empleado").style.display = "block";
         });
-    }
+    });
+});
+
+
+function cargarDetalleEmpleado(id) {
+    const apiUrl = `${API_URL_DETALLE_EMPLEADO}${id}/`;
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al cargar los datos del empleado.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            mostrarDetalleEnDOM(data);
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById("detalles-empleado").innerHTML = `
+                <div class="error">⚠️ No se pudo cargar la información del empleado.</div>`;
+        });
 }
 
-function createEmpleadosLVRow(empleados){
-    let row = document.createElement("tr")
+function mostrarDetalleEnDOM(empleado) {
+    const contenedor = document.getElementById("detalles-empleado");
 
-    let name = document.createElement("td")
-    let link_detail = document.createElement("a")
-        link_detail.setAttribute('href', "http://127.0.0.1:8000/empleados/"+empleados.dni);
-        link_detail.innerHTML = empleados.nombre;
-        name.append(link_detail)
-        row.appendChild(name);
+    contenedor.innerHTML = `
+        <div class="detalle-box">
+            <h3>Detalles del empleado</h3>
+            <p><strong>Nombre:</strong> ${empleado.nombre} ${empleado.apellido}</p>
+            <p><strong>Puesto:</strong> ${empleado.puesto}</p>
+            <p><strong>Email:</strong> ${empleado.email}</p>
+            <p><strong>Disponibilidad:</strong> ${empleado.disponibilidad}</p>
+        </div>
+    `;
 
-    let tel = document.createElement("td");
-        tel.textContent = empleados.telefono;
-        row.appendChild(tel);
-
-    let address = document.createElement("td")
-        address.textContent = empleados.direccion;
-        row.appendChild(address);
-    
-    let link_row = document.createElement("td")
-    let link_edit = document.createElement("a")
-        link_edit.setAttribute('href', "http://127.0.0.1:8000/empleados/"+empleados.dni+"/editar");
-        link_edit.className = "btn-link";
-        link_edit.innerHTML = "Editar";
-        link_row.append(link_edit);
-    let link_delete = document.createElement("a")
-        link_delete.setAttribute('href', "http://127.0.0.1:8000/empleados/"+empleados.id+"/borrar");
-        link_delete.className = "btn-link btn-link-red";
-        link_delete.innerHTML = "Borrar";
-        link_row.append(link_delete);
-        row.appendChild(link_row);
-
-    return row;
+    contenedor.style.display = "block";
 }

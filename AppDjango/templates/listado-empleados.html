@@ -8,8 +8,15 @@
             <a href="{% url 'crear-empleado' %}" class="boton-crear">Crear empleado</a>
             <ul class="lista">
                 {% for empleado in lista_empleados %}
-                    <li class="item-lista">
-                        <a href="{% url 'detalle_empleado' empleado.pk %}">
+                    <li class="item-lista"
+                        data-id="{{ empleado.id }}"
+                        data-nombre="{{ empleado.nombre }}"
+                        data-departamento="{{ empleado.departamento|default_if_none:'' }}"
+                        data-disponibilidad="{{ empleado.disponibilidad|default_if_none:'' }}"
+                        data-direccion="{{ empleado.direccion|default_if_none:'' }}"
+                        data-telefono="{{ empleado.telefono|default_if_none:'' }}"
+                    >
+                        <a href="#" class="detalle-empleado">
                             <span class="empleado-nombre">{{ empleado.nombre }}</span>
                             {% if empleado.departamento %}
                                 <span class="empleado-departamento">{{ empleado.departamento }}</span>
@@ -18,6 +25,15 @@
                     </li>
                 {% endfor %}
             </ul>
+
+            <!-- Detalle de empleado dinámico -->
+            <div id="detalles-empleado" style="display:none; margin-top: 1em; border: 1px solid #ccc; padding: 1em;">
+                <h3 id="detalle-nombre"></h3>
+                <p><strong>Departamento:</strong> <span id="detalle-departamento"></span></p>
+                <p><strong>Disponibilidad:</strong> <span id="detalle-disponibilidad"></span></p>
+                <p><strong>Dirección:</strong> <span id="detalle-direccion"></span></p>
+                <p><strong>Teléfono:</strong> <span id="detalle-telefono"></span></p>
+            </div>
         </div>
 
         <div class="funcionalidad-extra">
@@ -68,3 +84,4 @@
     </div>
 </div>
 {% endblock %}
+
