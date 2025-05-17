@@ -3,7 +3,7 @@ from .views import EmpleadoCreateView, EmpleadoDetailView, EmpleadoListView, Pro
 from . import views
 
 urlpatterns = [
-    
+    #url inicial/ bienvenida
     path('', views.vista_inicio, name='inicio'),
     # urls de usuarios
     path('login/', login_view, name='login'),

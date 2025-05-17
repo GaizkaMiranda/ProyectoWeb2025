@@ -71,7 +71,7 @@ TEMPLATES = [
 ]
 # Autenticación
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = 'proyectos'
+LOGIN_REDIRECT_URL = 'inicio'
 LOGOUT_REDIRECT_URL = 'login'
 
 WSGI_APPLICATION = 'ProyectoWeb2025.wsgi.application'

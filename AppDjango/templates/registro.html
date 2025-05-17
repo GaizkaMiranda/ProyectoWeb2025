@@ -15,7 +15,9 @@
     
     <form method="post" class="registration-form">
         {% csrf_token %}
-        
+        <!-- enlaces que nos han ayudado -->
+        <!-- https://docs.djangoproject.com/en/5.2/topics/forms/#looping-over-the-forms-fields  -->
+        <!-- https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html -->
         {% for field in form %}
         <div class="form-group">
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -34,14 +36,14 @@
         </div>
     </form>
     
-    <div class="auth-redirect">
-        ¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="auth-link">Inicia sesión aquí</a>.
+    <div class="texto-cuenta">
+        ¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="enlace-inicio">Inicia sesión aquí</a>.
     </div>
     
     {% if messages %}
     <div class="messages">
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
+        <div class="mensaje3">
             {{ message }}
         </div>
         {% endfor %}

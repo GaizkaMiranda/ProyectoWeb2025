@@ -8,6 +8,8 @@ from .forms import EmpleadoForm, ProyectoForm, TareaForm, HerramientaForm, Regis
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout 
 from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 # Create your views here.
@@ -18,7 +20,7 @@ def vista_inicio(request):
 #Vamos a realizar las vistas basadas en CLASES para facilitar tanto la creación como la manipulación de estas
 
 # LIST VIEWS:
-class ProyectoListView(View):
+class ProyectoListView(LoginRequiredMixin,View):
     def get(self, request):
         # Capturar el presupuesto desde la URL (?presupuesto=...)
         presupuesto_minimo = request.GET.get('presupuesto', 500)
@@ -43,7 +45,7 @@ class ProyectoListView(View):
         return render(request, "listado-proyectos.html", context)
 
     
-class TareaListView(View):
+class TareaListView(LoginRequiredMixin, View):
     def get(self, request):
         tareas_en_proceso = Tarea.objects.filter(estado = "en_proceso").order_by("nombre")
         tareas = get_list_or_404(Tarea.objects.order_by("nombre"))
@@ -55,7 +57,7 @@ class TareaListView(View):
         }
         return render(request, "listado-tareas.html", context)
 
-class EmpleadoListView(View):
+class EmpleadoListView(LoginRequiredMixin,View):
     def get(self, request):
         empleados = Empleado.objects.order_by("dni")
         ultimos_empleados = Empleado.objects.order_by('-id')[:3]
@@ -65,7 +67,7 @@ class EmpleadoListView(View):
         }
         return render(request, "listado-empleados.html", context)
 
-class HerramientaListView(View):
+class HerramientaListView(LoginRequiredMixin,View):
     def get(self, request):
         herramientas = Herramienta.objects.order_by("nombre")
         ultimas_herramientas = Herramienta.objects.order_by('-id')[:3]
@@ -76,7 +78,7 @@ class HerramientaListView(View):
         return render(request, "listado-herramientas.html", context)
 
 # DETAIL VIEWS:
-class EmpleadoDetailView(DetailView):
+class EmpleadoDetailView(LoginRequiredMixin,DetailView):
     model = Empleado 
     template_name = 'empleado-detalle.html'
     context_object_name = 'empleado'
@@ -86,7 +88,7 @@ class EmpleadoDetailView(DetailView):
         context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
         return context
 
-class ProyectoDetailView(DetailView):
+class ProyectoDetailView(LoginRequiredMixin,DetailView):
     model = Proyecto
     template_name = 'proyecto-detalle.html'
     context_object_name = 'proyecto'
@@ -96,7 +98,7 @@ class ProyectoDetailView(DetailView):
         context['ultimos_proyectos'] = Proyecto.objects.order_by('-id')[:3]
         return context
     
-class TareaDetailView(DetailView):
+class TareaDetailView(LoginRequiredMixin,DetailView):
     model = Tarea
     template_name = 'tarea-detalle.html'
     context_object_name = 'tarea'
@@ -112,7 +114,7 @@ class TareaDetailView(DetailView):
         return context
 
 
-class HerramientaDetailView(DetailView):
+class HerramientaDetailView(LoginRequiredMixin,DetailView):
     model = Herramienta
     template_name = "herramienta-detalle.html"
     context_object_name = "herramienta"
@@ -124,7 +126,7 @@ class HerramientaDetailView(DetailView):
 
 
 # CREATE VIEWS:
-class EmpleadoCreateView(CreateView):
+class EmpleadoCreateView(LoginRequiredMixin,CreateView):
     model = Empleado
     template_name = 'crear-empleado.html'
     form_class = EmpleadoForm
@@ -136,7 +138,7 @@ class EmpleadoCreateView(CreateView):
         context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
         return context
 
-class ProyectoCreateView(CreateView):
+class ProyectoCreateView(LoginRequiredMixin,CreateView):
     model = Proyecto
     template_name = 'crear-proyecto.html'
     form_class = ProyectoForm
@@ -148,7 +150,7 @@ class ProyectoCreateView(CreateView):
         context['ultimos_proyectos'] = Proyecto.objects.order_by('-id')[:3]
         return context
 
-class TareaCreateView(CreateView):
+class TareaCreateView(LoginRequiredMixin,CreateView):
     model = Tarea
     template_name = 'crear-tarea.html'
     form_class = TareaForm
@@ -160,7 +162,7 @@ class TareaCreateView(CreateView):
         context['ultimas_tareas'] = Tarea.objects.order_by('-id')[:3]
         return context
 
-class HerramientaCreateView(CreateView):
+class HerramientaCreateView(LoginRequiredMixin,CreateView):
     model = Herramienta
     template_name = "crear-herramienta.html"
     form_class = HerramientaForm
@@ -174,7 +176,7 @@ class HerramientaCreateView(CreateView):
 
 
 # DELETE VIEWS:
-class ProyectoDeleteView(DeleteView):
+class ProyectoDeleteView(LoginRequiredMixin,DeleteView):
     model = Proyecto
     success_url = reverse_lazy('proyectos')
 
@@ -183,7 +185,7 @@ class ProyectoDeleteView(DeleteView):
         context['ultimos_proyectos'] = Proyecto.objects.order_by('-id')[:3]
         return context
 
-class TareaDeleteView(DeleteView):
+class TareaDeleteView(LoginRequiredMixin,DeleteView):
     model = Tarea
     success_url = reverse_lazy('tareas')
 
@@ -192,7 +194,7 @@ class TareaDeleteView(DeleteView):
         context['ultimas_tareas'] = Tarea.objects.order_by('-id')[:3]
         return context
 
-class EmpleadoDeleteView(DeleteView):
+class EmpleadoDeleteView(LoginRequiredMixin,DeleteView):
     model = Empleado
     success_url = reverse_lazy('empleados')
 
@@ -201,7 +203,7 @@ class EmpleadoDeleteView(DeleteView):
         context['ultimos_empleados'] = Empleado.objects.order_by('-id')[:3]
         return context
 
-class HerramientaDeleteView(DeleteView):
+class HerramientaDeleteView(LoginRequiredMixin,DeleteView):
     model = Herramienta
     success_url = reverse_lazy('herramientas')
 
@@ -212,7 +214,7 @@ class HerramientaDeleteView(DeleteView):
 
 
 # UPDATE VIEWS:
-class ProyectoUpdateView(UpdateView):
+class ProyectoUpdateView(LoginRequiredMixin,UpdateView):
     model = Proyecto
     template_name = 'proyecto_update.html'
     form_class = ProyectoForm
@@ -245,7 +247,7 @@ class ProyectoUpdateView(UpdateView):
         
 
 
-class TareaUpdateView(UpdateView):
+class TareaUpdateView(LoginRequiredMixin,UpdateView):
     model = Tarea
     template_name = 'tarea_update.html'
     form_class = TareaForm
@@ -297,7 +299,7 @@ class TareaUpdateView(UpdateView):
     
 
 
-class EmpleadoUpdateView(UpdateView):
+class EmpleadoUpdateView(LoginRequiredMixin,UpdateView):
     model = Empleado
     template_name = 'empleado_update.html'
     form_class = EmpleadoForm
@@ -329,7 +331,7 @@ class EmpleadoUpdateView(UpdateView):
             return render(request, self.template_name, context)
     
         
-class HerramientaUpdateView(UpdateView):
+class HerramientaUpdateView(LoginRequiredMixin,UpdateView):
     model = Herramienta
     template_name = 'herramienta_update.html'
     form_class = HerramientaForm
@@ -392,7 +394,7 @@ def login_view(request):
             if user is not None:
                 if user.is_staff:  # Verifica que el usuario sea admin
                     login(request, user)
-                    next_url = request.GET.get('next', 'inicio')
+                    next_url = request.GET.get('next', 'inicio') #envíamos al usuario a la pantalla de bienvdenida/ inicio al iniciar sesión
                     return redirect(next_url)
                 else:
                     messages.error(request, 'No tienes permisos de administrador.')

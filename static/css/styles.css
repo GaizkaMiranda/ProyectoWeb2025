@@ -572,20 +572,18 @@ input[type="password"]:focus {
     margin-top: 0.5rem;
 }
 
-.auth-redirect {
+.texto-cuenta {
     text-align: center;
     margin-top: 1.5rem;
     color: #7f8c8d;
 }
 
-.auth-link {
+.enlace-inicio {
     color: #3498db;
-    text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s;
 }
 
-.auth-link:hover {
+.enlace-inicio:hover {
     color: #2980b9;
     text-decoration: underline;
 }
