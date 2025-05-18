@@ -133,3 +133,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# Nos ha sido útil consultar este enlace: https://www.geeksforgeeks.org/setup-sending-email-in-django-project/
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'deustotiltech80@gmail.com'
+EMAIL_HOST_PASSWORD = 'bhkn tqvq xpxd dvmx' 
+# Tenemos que generar una contraseña de aplicación y nos la genera automaticamente
+DEFAULT_FROM_EMAIL = 'deustotiltech80@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'

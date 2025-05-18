@@ -42,3 +42,19 @@ class RegistroForm(UserCreationForm):
             user.save()
         return user
     
+
+# formulario para el envio de emails
+class EmailForm(forms.Form):
+    mensaje = forms.CharField(
+        label='Mensaje',
+        widget=forms.Textarea(attrs={'rows': 3, 'cols': 100}),
+        
+        required=True
+    )
+
+    def clean_mensaje(self):
+        mensaje = self.cleaned_data.get('mensaje')
+        palabras_prohibidas = ["palabra1", "palabra2", "palabra3"]
+        for palabra in palabras_prohibidas:
+            mensaje = mensaje.replace(palabra, '*' * len(palabra))
+        return mensaje

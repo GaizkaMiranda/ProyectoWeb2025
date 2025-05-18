@@ -4,11 +4,13 @@ from .models import Empleado, Proyecto, Tarea, Herramienta
 from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .forms import EmpleadoForm, ProyectoForm, TareaForm, HerramientaForm, RegistroForm
+from .forms import EmpleadoForm, ProyectoForm, TareaForm, HerramientaForm, RegistroForm, EmailForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout 
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
+
 
 
 
@@ -447,3 +449,26 @@ def logout_view(request):
     
     # Redirigimos a la página de login
     return redirect('login')
+
+
+# vista de envio de emails
+@login_required(login_url='login')
+def enviar_mensaje_soporte(request):
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            mensaje = form.cleaned_data['mensaje']
+            try:
+                send_mail(
+                    'Mensaje de Soporte',
+                    mensaje,
+                    request.user.email,
+                    ['deustronicdeusto@gmail.com']
+                )
+                messages.success(request, 'Tu mensaje ha sido enviado al equipo de soporte.')
+                return redirect('soporte')
+            except Exception as e:
+                messages.error(request, f'Error al enviar el mensaje: {e}')
+    else:
+        form = EmailForm()
+    return render(request, 'soporte.html', {'form': form})
