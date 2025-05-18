@@ -9,11 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
             const li = this.closest(".item-lista");
 
             const nombre = li.dataset.nombre;
+            const dni = li.dataset.dni || "No especificado";
+            const apellidos = li.dataset.apellidos || "No especificado";
             const disponibilidad = li.dataset.disponibilidad || "No especificada";
+            const email = li.dataset.email || "No especificado";
             const telefono = li.dataset.telefono || "No especificado";
 
             // Actualiza el contenido del contenedor de detalles
             document.getElementById("detalle-nombre").textContent = nombre;
+            document.getElementById("detalle-dni").textContent = dni;
+            document.getElementById("detalle-apellidos").textContent = apellidos;
+            document.getElementById("detalle-email").textContent = email;
             document.getElementById("detalle-disponibilidad").textContent = disponibilidad;
             document.getElementById("detalle-telefono").textContent = telefono;
 
@@ -50,8 +56,8 @@ function mostrarDetalleEnDOM(empleado) {
     contenedor.innerHTML = `
         <div class="detalle-box">
             <h3>Detalles del empleado</h3>
-            <p><strong>Nombre:</strong> ${empleado.nombre} ${empleado.apellido}</p>
-            <p><strong>Puesto:</strong> ${empleado.puesto}</p>
+            <p><strong>Nombre:</strong> ${empleado.nombre}</p>
+            <p><strong>Apellido:</strong> ${empleado.apellidos}</p>
             <p><strong>Email:</strong> ${empleado.email}</p>
             <p><strong>Disponibilidad:</strong> ${empleado.disponibilidad}</p>
         </div>
