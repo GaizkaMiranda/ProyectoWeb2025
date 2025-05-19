@@ -374,10 +374,6 @@ def UltimosTresEmpleados(request):
 #Vistas realizadas para la E3-E4
 # INICIO DE SESIÓN
 # ha sido útil: https://stackoverflow.com/questions/75401759/how-to-set-up-login-view-in-python-django
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-
 def login_view(request):
     # Si el usuario ya está autenticado, redirigir
     if request.user.is_authenticated:
