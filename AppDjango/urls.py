@@ -11,8 +11,8 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     
     # url envio emails
-    path('soporte/', views.enviar_mensaje_soporte, name='soporte'),
-    path('actualizar_estado_pedido/<int:pk>/', views.actualizar_estado_pedido, name='actualizar_estado_pedido'),
+    path('consulta_email/', views.enviar_email, name='consulta_email'),
+    #path('actualizar_estado_pedido/<int:pk>/', views.actualizar_estado_pedido, name='actualizar_estado_pedido'),
     
     #URLs modelo: PROYECTO
     path("proyectos/" , ProyectoListView.as_view(), name="proyectos"),

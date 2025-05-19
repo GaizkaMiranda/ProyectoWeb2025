@@ -452,8 +452,7 @@ def logout_view(request):
 
 
 # vista de envio de emails
-@login_required(login_url='login')
-def enviar_mensaje_soporte(request):
+def enviar_email(request):
     if request.method == 'POST':
         form = EmailForm(request.POST)
         if form.is_valid():
@@ -463,12 +462,12 @@ def enviar_mensaje_soporte(request):
                     'Mensaje de Soporte',
                     mensaje,
                     request.user.email,
-                    ['deustronicdeusto@gmail.com']
+                    ['deustotiltech80@gmail.com']
                 )
-                messages.success(request, 'Tu mensaje ha sido enviado al equipo de soporte.')
-                return redirect('soporte')
+                messages.success(request, 'Mensaje enviado con éxito.')
+                return redirect('consulta_email')
             except Exception as e:
                 messages.error(request, f'Error al enviar el mensaje: {e}')
     else:
         form = EmailForm()
-    return render(request, 'soporte.html', {'form': form})
+    return render(request, 'consulta.html', {'form': form})
