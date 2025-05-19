@@ -12,8 +12,7 @@ urlpatterns = [
     
     # url envio emails
     path('consulta_email/', views.enviar_email, name='consulta_email'),
-    #path('actualizar_estado_pedido/<int:pk>/', views.actualizar_estado_pedido, name='actualizar_estado_pedido'),
-    
+        
     #URLs modelo: PROYECTO
     path("proyectos/" , ProyectoListView.as_view(), name="proyectos"),
     path("proyectos/<int:pk>/",ProyectoDetailView.as_view(), name="detalle_proyecto"),

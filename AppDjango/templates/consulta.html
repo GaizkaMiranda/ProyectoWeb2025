@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-    📧 Soporte | Deustotil Tech S.L.
+     Soporte | Deustotil Tech S.L.
 {% endblock %}
 
 {% block contenido %}
 <div class="soporte-contenedor">
-    <h1>📨 Contacta con el Soporte</h1>
+    <h1>Contacta con el Soporte</h1>
 
     {% if messages %}
         {% for message in messages %}
@@ -20,7 +20,7 @@
             {{ form.mensaje.label_tag }}<br>
             {{ form.mensaje }}
         </div>
-        <button type="submit" class="boton-enlace">✉️ Enviar mensaje</button>
+        <button type="submit" class="boton-enlace">Enviar mensaje</button>
     </form>
 </div>
 {% endblock %}
