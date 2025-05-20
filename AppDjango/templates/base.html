@@ -1,77 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <script src="{% static 'js/modificarTamanoTexto.js' %}"></script>
+  </head>
+  <body>
     <header>
-        <img src="{% static 'images/logo.png' %}" alt="Logo" class="header-icon">
+      <img
+        src="{% static 'images/logo.png' %}"
+        alt="Logo"
+        class="header-icon"
+      />
 
-        <ul class="menu-horizontal2">
-            <li><a href="{% url 'empleados' %}">Empleados</a></li>
-            <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
-            <li><a href="{% url 'tareas' %}">Tareas</a></li>
-            <li><a href="{% url 'herramientas' %}">Herramientas</a></li>
-            <li><a href="{% url 'consulta_email' %}" class="boton-enlace">Consultas</a></li>
-            <li><a href="{% url 'logout' %}" class="boton-enlace">Cerrar sesión</a></li>
-        </ul>
+      <ul class="menu-horizontal2">
+        <li><a href="{% url 'empleados' %}">Empleados</a></li>
+        <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
+        <li><a href="{% url 'tareas' %}">Tareas</a></li>
+        <li><a href="{% url 'herramientas' %}">Herramientas</a></li>
+        <li>
+          <a href="{% url 'consulta_email' %}" class="boton-enlace"
+            >Consultas</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'logout' %}" class="boton-enlace">Cerrar sesión</a>
+        </li>
+      </ul>
+
+        <div class="botonesModificarTexto">
+            <button id="aumentarTexto">Letra Más Grande</button>
+            <button id="disminuirTexto">Letra Más Pequeña</button>
+        </div>
     </header>
 
-    <h2>{% block title %}⚙️Bienvenido/a a Deustotil Tech S.L.⚙️{% endblock %}</h2>
+    <h2>
+      {% block title %}⚙️Bienvenido/a a Deustotil Tech S.L.⚙️{% endblock %}
+    </h2>
 
-    <div id="content">
-        {% block contenido %}{% endblock %}
-    </div>
+    <div id="content">{% block contenido %}{% endblock %}</div>
 
-    <aside class="sidebar">
-        {% block listado_lateral %}{% endblock %}
-    </aside>
+    <aside class="sidebar">{% block listado_lateral %}{% endblock %}</aside>
 
     <footer>
-        {% block footer %}
-            <div class="contenedor-footer">
-                {% block footer_contenido %}
-                    <!-- aquí cada página pondrá lo suyo: empleados, tareas, proyectos o herramientas -->
-                {% endblock %}
-
-                <div class="columna-footer">
-                    <h3>Datos de contacto</h3>
-                    <ul>
-                        <li>Polígono Industrial Jundiz, C.jundiz, 3, Vitoria-Gasteiz</li>
-                        <li>Número de teléfono: +34 635 547 710</li>
-                        <li>Correo electrónico: Deustotil@deusto.eus</li>
-                    </ul>
-                </div>
-
-                <div class="columna-footer">
-                    <h3>Sobre nosotros</h3>
-                    <div class="nosotros">
-                        <div class="iconos-redes">
-                            <a href="https://www.linkedin.com/">
-                                <img src="{% static '/images/linkedin.png' %}" alt="LinkedIn">
-                            </a>
-                            <a href="https://x.com/">
-                                <img src="{% static '/images/twitter.png' %}" alt="Twitter">
-                            </a>
-                            <a href="https://github.com/GaizkaMiranda/ProyectoWeb2025">
-                                <img src="{% static '/images/github.png' %}" alt="GitHub">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="copyright">
-                <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
-            </div>
+      {% block footer %}
+      <div class="contenedor-footer">
+        {% block footer_contenido %}
+        <!-- aquí cada página pondrá lo suyo: empleados, tareas, proyectos o herramientas -->
         {% endblock %}
+
+        <div class="columna-footer">
+          <h3>Datos de contacto</h3>
+          <ul>
+            <li>Polígono Industrial Jundiz, C.jundiz, 3, Vitoria-Gasteiz</li>
+            <li>Número de teléfono: +34 635 547 710</li>
+            <li>Correo electrónico: Deustotil@deusto.eus</li>
+          </ul>
+        </div>
+
+        <div class="columna-footer">
+          <h3>Sobre nosotros</h3>
+          <div class="nosotros">
+            <div class="iconos-redes">
+              <a href="https://www.linkedin.com/">
+                <img src="{% static '/images/linkedin.png' %}" alt="LinkedIn" />
+              </a>
+              <a href="https://x.com/">
+                <img src="{% static '/images/twitter.png' %}" alt="Twitter" />
+              </a>
+              <a href="https://github.com/GaizkaMiranda/ProyectoWeb2025">
+                <img src="{% static '/images/github.png' %}" alt="GitHub" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <small
+          >&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech
+          S.L.</small
+        >
+      </div>
+      {% endblock %}
     </footer>
 
     <!-- Scripts -->
     <script src="{% static 'js/validar-empleado.js' %}"></script>
     <script src="{% static 'js/fetchAPI.js' %}"></script>
-</body>
+  </body>
 </html>
