@@ -17,20 +17,17 @@
             <li><a href="{% url 'herramientas' %}">Herramientas</a></li>
             <li><a href="{% url 'consulta_email' %}" class="boton-enlace">Consultas</a></li>
             <li><a href="{% url 'logout' %}" class="boton-enlace">Cerrar sesión</a></li>
-
         </ul>
     </header>
 
     <h2>{% block title %}⚙️Bienvenido/a a Deustotil Tech S.L.⚙️{% endblock %}</h2>
 
     <div id="content">
-        {% block contenido %}
-        {% endblock %}
+        {% block contenido %}{% endblock %}
     </div>
-        
+
     <aside class="sidebar">
-        {% block listado_lateral %}
-        {% endblock %}
+        {% block listado_lateral %}{% endblock %}
     </aside>
 
     <footer>
@@ -66,15 +63,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <small>&copy;2025 <b>Deustotil Tech S.L.</b> - Página oficial Deustotil Tech S.L.</small>
             </div>
         {% endblock %}
     </footer>
-    
-    <script src="{% static "js/validar-empleado.js" %}"></script>
-    <script src="{% static 'js/fetchAPI.js' %}"></script>
 
+    <!-- Scripts -->
+    <script src="{% static 'js/validar-empleado.js' %}"></script>
+    <script src="{% static 'js/fetchAPI.js' %}"></script>
 </body>
 </html>

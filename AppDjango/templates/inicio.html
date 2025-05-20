@@ -6,6 +6,18 @@
 
 {% block contenido %}
 <div class="inicio-contenedor">
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+                <a href="{% url 'login' %}?next={{ request.GET.next }}" class="btn-login-now">Iniciar sesión ahora</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
     <div class="auth-buttons">
         {% if user.is_authenticated %}
             <div class="user-welcome">
@@ -16,7 +28,6 @@
             <div class="auth-options">
                 <a href="{% url 'login' %}" class="boton-enlace auth-btn">🔑 Iniciar sesión</a>
                 <a href="{% url 'registro' %}" class="boton-enlace auth-btn">📝 Registrarse</a>
-
             </div>
         {% endif %}
     </div>
@@ -26,10 +37,10 @@
 
     <div class="navegacion-principal">
         <ul class="menu-inicio">
-            <li><a href="{% url 'proyectos' %}" class="boton-enlace">📁 Ver Proyectos</a></li>
-            <li><a href="{% url 'empleados' %}" class="boton-enlace">👨‍💼 Ver Empleados</a></li>
-            <li><a href="{% url 'tareas' %}" class="boton-enlace">📝 Ver Tareas</a></li>
-            <li><a href="{% url 'herramientas' %}" class="boton-enlace">🔧 Ver Herramientas</a></li>
+            <li><a href="{% url 'proyectos' %}" class="boton-enlace" data-login-required="true">📁 Ver Proyectos</a></li>
+            <li><a href="{% url 'empleados' %}" class="boton-enlace" data-login-required="true">👨‍💼 Ver Empleados</a></li>
+            <li><a href="{% url 'tareas' %}" class="boton-enlace" data-login-required="true">📝 Ver Tareas</a></li>
+            <li><a href="{% url 'herramientas' %}" class="boton-enlace" data-login-required="true">🔧 Ver Herramientas</a></li>
         </ul>
     </div>
 </div>
