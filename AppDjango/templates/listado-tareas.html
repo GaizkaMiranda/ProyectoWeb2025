@@ -11,10 +11,14 @@
                     {% for tarea in lista_tareas %}  
                         <li class="item-lista">
                             <a href="{% url 'detalle_tarea' tarea.pk %}">
-                                {{ tarea.nombre }}
+                                <strong>{{ tarea.nombre }}</strong>
                                 {% if tarea.estado %}
                                     ({{ tarea.estado }})
                                 {% endif %}
+                                {% if tarea.Proyecto %}
+                                    del proyecto:({{ tarea.Proyecto }})
+                                {% endif %}
+                                
                             </a>
                         </li> 
                     {% endfor %} 

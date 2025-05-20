@@ -14,15 +14,20 @@
                 <li><strong>Nivel de responsabilidad:</strong> {{ tarea.n_responsabilidad }} </li>
                 <li><strong>Estado:</strong> {{ tarea.estado }} </li>
                 <li><strong>Herramientas:</strong>
-                    {% if tarea.herramientas.all %}
-                      <ul>
-                        {% for herramienta in tarea.herramientas.all %}
-                          <li>{{ herramienta.nombre }}</li>
-                        {% endfor %}
-                      </ul>
-                    {% else %}
-                      <span>No hay herramientas asignadas.</span>
-                    {% endif %}
+                  {% if tarea.herramientas.all %}
+                    <ul>
+                      {% for herramienta in tarea.herramientas.all %}
+                        <li>
+                          <a href="{% url 'detalle_herramienta' herramienta.pk %}">
+                            {{ herramienta.nombre }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <span>No hay herramientas asignadas.</span>
+                  {% endif %}
+
                   </li>
                 <li><strong>Notas:</strong> {{ tarea.notas }} </li>
             </ul>

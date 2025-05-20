@@ -48,7 +48,7 @@ class Empleado(models.Model):
     disponibilidad = models.CharField(max_length=20, choices=EMPLEADO_DISPONIBILIDAD, default="disponible")
 # Metodo del modelo empleado:
     def __str__(self):
-        return f"{self.dni}- {self.nombre}- {self.apellidos}- {self.email}- {self.telefono}"
+        return f"{self.dni}- {self.nombre}- {self.apellidos}"
 
 # Modelo PROYECTO
 # Proyecto M-N Empleados
@@ -63,7 +63,7 @@ class Proyecto(models.Model):
     empleados = models.ManyToManyField(Empleado, related_name="proyectos")
 # Metodo del modelo proyecto:
     def __str__(self):
-        return f"{self.nombre}- {self.descripcion}- {self.fecha_inicio}- {self.fecha_fin}- {self.presupuesto}- {self.cliente}"
+        return f"{self.nombre}"
  
 # Modelo HERRAMIENTA
 class Herramienta(models.Model):
@@ -75,7 +75,7 @@ class Herramienta(models.Model):
     pertenencia = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='otro')
 # Metodo del modelo herramienta:
     def __str__(self):
-        return f"{self.nombre}-{self.descripcion}-{self.horas_disponibilidad}"   
+        return f"{self.nombre}-{self.descripcion}"   
 
 # Modelo TAREA
 class Tarea(models.Model):
@@ -92,4 +92,4 @@ class Tarea(models.Model):
     notas = models.TextField(max_length=500)
     # Metodo del modelo tarea   
     def __str__(self):
-        return f"{self.nombre}- {self.descripcion}- {self.fecha_inicio}- {self.fecha_fin}- {self.responsable}- {self.n_responsabilidad}- {self.estado}"
+        return f"{self.nombre}- {self.descripcion}"

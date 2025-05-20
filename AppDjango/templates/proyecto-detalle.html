@@ -13,11 +13,15 @@
                 <li><strong>Empleados:</strong>
                     <ul class="empleados-de-proyecto">
                         {% for empleado in proyecto.empleados.all %}
-                            <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
-                    
+                        <li>
+                            <a href="{% url 'detalle_empleado' empleado.id %}">
+                                {{ empleado.nombre }} {{ empleado.apellidos }}
+                            </a>
+                        </li>
                         {% endfor %}
                     </ul>
                 </li>
+
             </ul>
             <form method="post" action="{% url 'proyecto_delete' proyecto.pk %}">
                 {% csrf_token %}
