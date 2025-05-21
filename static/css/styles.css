@@ -45,6 +45,31 @@ nav {
     background-color: #0073e6;
 }
 
+/*Botones del header para modificar el tamaño de los elementos tipo text*/
+.botonesModificarTexto {
+    display: flex;
+    gap: 10px;
+    white-space: nowrap;
+    margin-top: -25px; 
+}
+
+.botonesModificarTexto button {
+    background-color: white;
+    color: #0073e6;
+    border: 2px solid white;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botonesModificarTexto button:hover {
+    background-color: #cce0ff;
+    color: 0073e6;
+    border-color: #99c2ff;
+}
+
 main {
     padding: 20px;
 }
@@ -171,7 +196,6 @@ h2 {
     align-items: center;
     width: 100%;
     position: relative;
-    left: -70px; /* Mueve el grupo hacia la izquierda */
 }
 
 
