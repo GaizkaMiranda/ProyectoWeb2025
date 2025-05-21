@@ -208,7 +208,6 @@ h2 {
     color: white;
     padding: 10px 15px;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
 .menu-horizontal2 li a:hover {
@@ -481,7 +480,6 @@ input[type="password"]:focus {
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    transition: background-color 0.3s;
     flex: 1;
     margin-right: 1rem;
 }
@@ -499,7 +497,6 @@ input[type="password"]:focus {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
-    transition: background-color 0.3s;
     flex: 1;
 }
 
@@ -645,4 +642,115 @@ input[type="password"]:focus {
 .form-group input[type="checkbox"] {
     width: auto;
     margin-right: 10px;
+}
+
+/*-------------------------Estilos página de inicio--------------*/
+
+/* Contenedor general opcional */
+.navegacion-principal {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.titulo-inicio {
+    font-size: 2rem;
+    text-align: center;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.descripcion-inicio {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.menu-inicio {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-inicio li {
+    margin: 15px 0;
+}
+.user-welcome {
+    margin: 50px;
+}
+
+.boton-enlace {
+    display: inline-block;
+    width: 100%;
+    max-width: 250px;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.boton-enlace:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+.seccion-lateral {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto; /* Auto en los lados para centrar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 400px; /* Ancho máximo controlado */
+    text-align: center; /* Centra el texto dentro */
+}
+
+.seccion-lateral h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.seccion-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.seccion-lateral ul li {
+    margin-bottom: 12px;
+}
+
+.seccion-lateral ul li a {
+    display: inline-block;
+    width: 300px; /* Hace que todos los botones ocupen el mismo ancho */
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.seccion-lateral ul li a:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.login-required {
+    font-style: italic;
+    color: #777;
+    padding: 10px;
+    background-color: #ffe8e8;
+    border: 1px solid #ffb3b3;
+    border-radius: 8px;
 }
