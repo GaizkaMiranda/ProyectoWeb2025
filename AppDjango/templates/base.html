@@ -2,10 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <script src="{% static 'js/modificarTamanoTexto.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
   </head>
   <body>
     <header>
@@ -20,14 +19,8 @@
         <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
         <li><a href="{% url 'tareas' %}">Tareas</a></li>
         <li><a href="{% url 'herramientas' %}">Herramientas</a></li>
-        <li>
-          <a href="{% url 'consulta_email' %}" class="boton-enlace"
-            >Consultas</a
-          >
-        </li>
-        <li>
-          <a href="{% url 'logout' %}" class="boton-enlace">Cerrar sesión</a>
-        </li>
+        <li><a href="{% url 'consulta_email' %}">Consultas</a></li>
+        <li><a href="{% url 'logout' %}"id="cerrarSesion">Cerrar sesión</a></li>
       </ul>
 
         <div class="botonesModificarTexto">
@@ -35,7 +28,7 @@
             <button id="disminuirTexto">Letra Más Pequeña</button>
         </div>
     </header>
-
+    
     <h2>
       {% block title %}⚙️Bienvenido/a a Deustotil Tech S.L.⚙️{% endblock %}
     </h2>
@@ -90,5 +83,7 @@
     <!-- Scripts -->
     <script src="{% static 'js/validar-empleado.js' %}"></script>
     <script src="{% static 'js/fetchAPI.js' %}"></script>
+    <script src="{% static 'js/modificarTamanoTexto.js' %}"></script>
+    <script src="{% static 'js/alertaCerrarSesion.js' %}"></script>
   </body>
 </html>
