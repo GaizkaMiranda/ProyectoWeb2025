@@ -37,11 +37,11 @@
 
 {% block listado_lateral %}
 <div class="lista-contenedor">
-    <div class="seccion-lateral">
+    <div class="ultimos">
         <h3>Últimas herramientas</h3>
         <ul class="lista">
             {% for herramienta in ultimas_herramientas %}
-                <li>
+                <li class="item-lista">
                     <a href="{% url 'detalle_herramienta' herramienta.pk %}">
                         {{ herramienta.nombre }}
                     </a>

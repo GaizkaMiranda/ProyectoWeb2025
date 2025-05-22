@@ -46,11 +46,11 @@
 
 {% block listado_lateral %}
 <div class="lista-contenedor">
-    <div class="seccion-lateral">
+    <div class="ultimos">
         <h3><i></i> Últimos proyectos</h3>
         <ul class="lista">
             {% for proyecto in ultimos_proyectos %}
-                <li>
+                <li class="item-lista">
                     <a href="{% url 'detalle_proyecto' proyecto.pk %}">
                         {{ proyecto.nombre }}
                         {% if proyecto.fecha_entrega %}

@@ -272,7 +272,7 @@ h2 {
     margin: 0 auto;
 }
 
-.contenido-principal, .seccion-lateral {
+.contenido-principal, .ultimos {
     flex: 1 1 500px;
     max-width: 500px;
     padding: 20px;
@@ -282,7 +282,7 @@ h2 {
     border: 1px solid #ddd;
 }
 
-.seccion-lateral h3{
+.ultimos h3{
     align-items: center;
 }
 
