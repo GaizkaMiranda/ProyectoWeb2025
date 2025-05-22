@@ -6,23 +6,35 @@
         <div class="contenido-principal">
             <h1 class="page-title"><i></i> Lista de empleados</h1>
             <a href="{% url 'crear-empleado' %}" class="boton-crear">Crear empleado</a>
-            <ul class="lista">
-                {% for empleado in lista_empleados %}
-                    <li class="item-lista"
-                        data-id="{{ empleado.id }}"
-                        data-nombre="{{ empleado.nombre }}"
-                        data-apellidos="{{ empleado.apellidos|default_if_none:'' }}"
-                        data-disponibilidad="{{ empleado.disponibilidad|default_if_none:'' }}"
-                        data-email="{{ empleado.email|default_if_none:'' }}"
-                        data-telefono="{{ empleado.telefono|default_if_none:'' }}"
-                        data-dni="{{ empleado.dni|default_if_none:'' }}"
-                    >
-                        <a href="#" class="detalle-empleado">
-                            <span class="empleado-nombre">{{ empleado.nombre }}</span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <div class="empleados-y-detalles">
+                <ul class="lista">
+                    {% for empleado in lista_empleados %}
+                        <li class="item-lista"
+                            data-id="{{ empleado.id }}"
+                            data-nombre="{{ empleado.nombre }}"
+                            data-apellidos="{{ empleado.apellidos|default_if_none:'' }}"
+                            data-disponibilidad="{{ empleado.disponibilidad|default_if_none:'' }}"
+                            data-email="{{ empleado.email|default_if_none:'' }}"
+                            data-telefono="{{ empleado.telefono|default_if_none:'' }}"
+                            data-dni="{{ empleado.dni|default_if_none:'' }}"
+                        >
+                            <a href="#" class="detalle-empleado">
+                                <span class="empleado-nombre">{{ empleado.nombre }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <ul class="lista">
+                    {% for empleado in lista_empleados %}
+                        <li class="item-lista">
+                            <a href="{% url 'detalle_empleado' empleado.pk %}">
+                                Detalles 
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
             <!-- Detalle de empleado dinámico -->
             <div id="detalles-empleado" style="display:none; margin-top: 1em; border: 1px solid #ccc; padding: 1em;">
@@ -68,12 +80,9 @@
         <h3>Últimos empleados</h3>
         <ul class="lista">
             {% for empleado in ultimos_empleados %}
-                <li class="list-item">
+                <li class="item-lista">
                     <a href="{% url 'detalle_empleado' empleado.pk %}">
                         {{ empleado.nombre }}
-                        {% if empleado.puesto %}
-                            <small>{{ empleado.puesto }}</small>
-                        {% endif %}
                     </a>
                 </li>
             {% empty %}

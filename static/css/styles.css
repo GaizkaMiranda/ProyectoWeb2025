@@ -292,6 +292,20 @@ h2 {
     font-style: italic;
 }
 
+.empleados-y-detalles {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between; /* opcional: espacio entre las listas */
+    gap: 40px; /* opcional: separación entre listas */
+}
+
+.empleados-y-detalles ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* o un ancho fijo si lo prefieres */
+}
+
 .lista {
     list-style-type: none;
     width: 100%; 
@@ -314,6 +328,8 @@ h2 {
 .lista li:hover {
     background-color: #b8dcff;
 }
+
+
 
 /* Estilos para centrar los empleados no disponibles */
 
