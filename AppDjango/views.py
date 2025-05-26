@@ -458,7 +458,7 @@ def enviar_email(request):
                     'Mensaje de Soporte',
                     mensaje,
                     request.user.email,
-                    ['deustotiltech80@gmail.com']
+                    ['deustotiltechsl2025@gmail.com']
                 )
                 messages.success(request, 'Mensaje enviado con éxito.')
                 return redirect('consulta_email')

@@ -139,8 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'deustotiltech80@gmail.com'
-EMAIL_HOST_PASSWORD = 'bhkn tqvq xpxd dvmx' 
+EMAIL_HOST_USER = 'deustotiltechsl2025@gmail.com'
+EMAIL_HOST_PASSWORD = 'pshm vrxd ldjt adzg' 
 # Tenemos que generar una contraseña de aplicación y nos la genera automaticamente
-DEFAULT_FROM_EMAIL = 'deustotiltech80@gmail.com'
+DEFAULT_FROM_EMAIL = 'deustotiltechsl2025@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
